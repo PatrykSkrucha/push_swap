@@ -10,7 +10,6 @@ typedef struct s_stack
 {
 	int				number;
 	struct s_stack	*next;
-	struct s_stack	*previous;
 }	small_stack;
 
 typedef struct two_stacks

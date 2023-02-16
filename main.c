@@ -84,6 +84,7 @@ int main(int argc, char **argv)
 {
 	//(void)argv;
 	//(void)argc;
+	write(2, "a", 1);
 	//if (argc < 3)
 	//	return (ft_printf("nic") && 1);
 	//if (check_if_number(argv, argc) || check_min_max(argv, argc) 
