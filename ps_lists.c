@@ -21,29 +21,53 @@ small_stack	*lstlast(small_stack *lst)
 	return (lst);
 }
 
-void	add_back(small_stack **lst, small_stack *new)
+void	add_back(big_stack *lst, small_stack *new, int control)
 {
 	small_stack	*temp;
 
-	if (*lst == NULL)
+	if (control)
 	{
-		*lst = new;
-		return ;
+		if (lst->stack_a == NULL)
+		{
+			lst->stack_a = new;
+			return ;
+		}
+		temp = lstlast(lst->stack_a);
+		temp->next = new;
 	}
-	temp = lstlast(*lst);
-	temp->next = new;
+	else
+	{
+		if (lst->stack_b == NULL)
+		{
+			lst->stack_b = new;
+			return ;
+		}
+		temp = lstlast(lst->stack_b);
+		temp->next = new;
+	}
 }
 
-void	ft_lstadd_front(small_stack **lst, small_stack *new)
+void	add_front(big_stack *lst, small_stack *new, int control)
 {
-	if (lst)
+	if (control)
 	{
-		new->next = *lst;
-		*lst = new;
+		if (lst)
+		{
+			new->next = lst->stack_a;
+			lst->stack_a = new;
+		}
+	}
+	else
+	{
+		if (lst)
+		{
+			new->next = lst->stack_b;
+			lst->stack_b = new;
+		}
 	}
 }
 
-int	ft_lstsize(t_list *lst)
+int	lstsize(small_stack  *lst)
 {
 	int	i;
 

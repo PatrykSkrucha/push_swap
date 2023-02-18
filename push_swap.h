@@ -20,6 +20,12 @@ typedef struct two_stacks
 }	big_stack;
 
 
-void printi();
+small_stack	*new_list(int content);
+small_stack	*lstlast(small_stack *lst);
+void	add_back(big_stack *lst, small_stack *new, int control);
+void	lstadd_front(big_stack *lst, small_stack *new, int control);
+int	lstsize(small_stack  *lst);
+void arrange_stack(char **input, int amount);
+
 
 #endif

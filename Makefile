@@ -1,4 +1,4 @@
-FILES = main.c ps_lists.c
+FILES = main.c ps_lists.c lists_utils.c
 OFILES = $(FILES:.c=.o)
 
 EMAIN = main
@@ -24,7 +24,7 @@ clean:
 
 fclean: clean
 	$(RM) $(OFILES)
-	make clean -C libft
+	make fclean -C libft
 re: fclean all
 
 .PHONY: all clean fclean
