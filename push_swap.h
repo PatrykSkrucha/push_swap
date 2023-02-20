@@ -26,7 +26,13 @@ small_stack	*lstlast(small_stack *lst);
 void	add_back(big_stack *lst, small_stack *new, int control);
 void	add_front(big_stack *lst, small_stack *new, int control);
 int	lstsize(small_stack  *lst);
-void arrange_stack(char **input, int amount);
+big_stack *arrange_stack(char **input, int amount);
 void move_forward_a(big_stack *stack);
+void move_backwards_a(big_stack *stack);
+void del_first(big_stack *stack, int control);
+void push_b(big_stack *stack);
+void push_a(big_stack *stack);
+int sort_check(big_stack *stack);
+void radix(big_stack *stack, int size);
 
 #endif

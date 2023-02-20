@@ -69,7 +69,7 @@ int check_min_max(char **input, int amount)
 
 int main(int argc, char **argv)
 {
-	//char *s[20] = {"hah", "hah", "dd"};
+	//char *s[20] = {"hah", "hah", "dd"}; // spr ktore musza byc static
 	//ft_printf(s[1]);
 	//(void)argv;
 	//(void)argc;
@@ -85,7 +85,26 @@ int main(int argc, char **argv)
 	//if (check_duplicate(argv, argc))
 	//	return (ft_printf("dupl") && 1);
 	//ft_printf("haha");
-	arrange_stack(argv, argc);
+	big_stack *stack;
 
+	stack = arrange_stack(argv, argc);
+	//print_list(stack->stack_a);
+	//ft_printf("after 2x pb:\n");
+	//if (sort_check(stack))
+	//	ft_printf("sorted");
+	//else
+	//	ft_printf("nic");
+	radix(stack, argc);
+	int i = 0;
+	//while (++i <= lstsize(stack->stack_a))
+	//	{
+	//		ft_printf("hello");
+	//	}
+	//if (stack->stack_a->number & 1 << 1)
+	//	ft_printf("jest");
+	//ft_printf("%i\n", stack->stack_a->number);
+	//move_forward_a(stack);
+	//ft_printf("%i\n", stack->stack_a->number);
+	//print_list(stack->stack_a);
 	return (0);
 }

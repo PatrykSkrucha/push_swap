@@ -23,13 +23,10 @@ small_stack	*lstlast(small_stack *lst)
 
 void print_list(small_stack *lst)
 {
-	small_stack *temp;
-	
-	temp = lst;
-	while(temp != NULL)
+	while(lst != NULL)
 	{
-		ft_printf("%i\n", temp->number);
-		temp = temp->next;
+		ft_printf("%i\n", lst->number);
+		lst = lst->next;
 	}
 }
 
@@ -78,7 +75,6 @@ int	lstsize(small_stack  *lst)
 	int	i;
 
 	i = 0;
-	//ft_printf("gg");
 	while (lst != NULL)
 	{
 		i++;
@@ -89,26 +85,81 @@ int	lstsize(small_stack  *lst)
 
 void move_forward_a(big_stack *stack)
 {
-	big_stack *temp;
 	small_stack *head;
 
-	temp = stack;
-	head = new_list(lstlast(temp->stack_a)->number);
-	add_front(temp, head, 1);
+	head = new_list(lstlast(stack->stack_a)->number);
+	add_front(stack, head, 1);
 
-	while (temp->stack_a != NULL)
+	while (stack->stack_a != NULL)
 	{
-		if (temp->stack_a->next->next == NULL)
+		if (stack->stack_a->next->next == NULL)
 		{
-
-			temp->stack_a->next = NULL;
+			free(stack->stack_a->next);
+			stack->stack_a->next = NULL;
 		}
-		//{
-		//	ft_printf("ten: %i\nnastepny: %i", temp->number, temp->next->number);
-		//}
-		temp->stack_a = temp->stack_a->next;
+		stack->stack_a = stack->stack_a->next;
 	}
-	temp->stack_a = head;
-	print_list(temp->stack_a);
-	//ft_printf("%i", tail->number);
+	stack->stack_a = head;
+}
+
+void move_backwards_a(big_stack *stack)
+{
+	small_stack *head;
+
+	if (lstsize(stack->stack_a) > 1)
+	{
+		head = stack->stack_a->next;
+		add_back(stack, new_list(stack->stack_a->number), 1);
+		free(stack->stack_a);
+		stack->stack_a = head;
+	}
+}
+
+void del_first(big_stack *stack, int control)
+{
+	small_stack *head;
+
+	if (control)
+	{
+		head = stack->stack_a->next;
+		free(stack->stack_a);
+		stack->stack_a = head;
+	}
+	else
+	{
+		head = stack->stack_b->next;
+		free(stack->stack_b);
+		stack->stack_b = head;
+	}
+}
+
+void push_b(big_stack *stack)
+{
+	if (stack->stack_a)
+	{
+		add_front(stack, new_list(stack->stack_a->number), 0);
+		del_first(stack, 1);
+		ft_printf("pb\n");
+	}
+}
+
+void push_a(big_stack *stack)
+{
+	if (stack->stack_b)
+	{
+		add_front(stack, new_list(stack->stack_b->number), 1);
+		del_first(stack, 0);
+		ft_printf("pa\n");
+	}
+}
+
+int sort_check(big_stack *stack)
+{
+	while (stack->stack_a->next != NULL)
+	{
+		if (stack->stack_a->number > stack->stack_a->next->number)
+			return (1);
+		stack->stack_a = stack->stack_a->next;
+	}
+	return (0);
 }

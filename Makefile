@@ -1,4 +1,4 @@
-FILES = main.c ps_lists.c lists_utils.c
+FILES = main.c ps_lists.c lists_utils.c radix.c
 OFILES = $(FILES:.c=.o)
 
 EMAIN = main
