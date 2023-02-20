@@ -86,5 +86,6 @@ int main(int argc, char **argv)
 	//	return (ft_printf("dupl") && 1);
 	//ft_printf("haha");
 	arrange_stack(argv, argc);
+
 	return (0);
 }
