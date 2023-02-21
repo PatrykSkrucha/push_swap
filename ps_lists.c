@@ -166,6 +166,27 @@ int sort_check_desc(small_stack *stack)
 	return (0);
 }
 
+static void free_everything(big_stack *stack)
+{
+	small_stack *temp;
+	big_stack *temp_stack;
+	
+	temp = stack->stack_a;
+	temp_stack = stack;
+	while (stack->stack_a)
+	{
+		temp = stack->stack_a;
+		stack->stack_a = stack->stack_a->next;
+		free(temp);
+	}
+	while (stack->stack_b)
+	{
+		temp = stack->stack_b;
+		stack->stack_b = stack->stack_b->next;
+		free(temp);
+	}
+	free(stack);
+}
 int sort_check_asc(small_stack *stack, big_stack *container)
 {
 	small_stack *head = stack;
@@ -175,9 +196,11 @@ int sort_check_asc(small_stack *stack, big_stack *container)
 			return (1);
 		stack = stack->next;
 	}
-	//if (!container->stack_b)
-	//ft_printf("head");
-	//exit (0);
+	if (!container->stack_b)
+	{
+		free_everything(container);
+		exit (0);
+	}
 	//else
-		return (0);
+		//return (0);
 }
