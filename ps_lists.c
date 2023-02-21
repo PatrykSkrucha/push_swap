@@ -189,7 +189,6 @@ void free_everything(big_stack *stack)
 }
 int sort_check_asc(small_stack *stack, big_stack *container)
 {
-	small_stack *head = stack;
 	while (stack->next != NULL)
 	{
 		if (stack->number >  stack->next->number)
@@ -198,9 +197,11 @@ int sort_check_asc(small_stack *stack, big_stack *container)
 	}
 	if (!container->stack_b)
 	{
+		ft_printf("\nsorted list:\n");
+		print_list(container->stack_a);
 		free_everything(container);
 		exit (0);
 	}
-	//else
-		//return (0);
+	else
+		return (0);
 }
