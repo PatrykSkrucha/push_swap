@@ -176,7 +176,8 @@ int sort_check_asc(small_stack *stack, big_stack *container)
 		stack = stack->next;
 	}
 	//if (!container->stack_b)
-	//	exit (0);
+	//ft_printf("head");
+	//exit (0);
 	//else
 		return (0);
 }
