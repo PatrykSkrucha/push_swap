@@ -32,7 +32,8 @@ void move_backwards_a(big_stack *stack);
 void del_first(big_stack *stack, int control);
 void push_b(big_stack *stack);
 void push_a(big_stack *stack);
-int sort_check(big_stack *stack);
+int sort_check_desc(small_stack *stack);
+int sort_check_asc(small_stack *stack);
 void radix(big_stack *stack, int size);
 
 #endif

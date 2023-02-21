@@ -100,6 +100,7 @@ void move_forward_a(big_stack *stack)
 		stack->stack_a = stack->stack_a->next;
 	}
 	stack->stack_a = head;
+	ft_printf("rra\n");
 }
 
 void move_backwards_a(big_stack *stack)
@@ -112,6 +113,7 @@ void move_backwards_a(big_stack *stack)
 		add_back(stack, new_list(stack->stack_a->number), 1);
 		free(stack->stack_a);
 		stack->stack_a = head;
+		ft_printf("ra\n");
 	}
 }
 
@@ -153,13 +155,24 @@ void push_a(big_stack *stack)
 	}
 }
 
-int sort_check(big_stack *stack)
+int sort_check_desc(small_stack *stack)
 {
-	while (stack->stack_a->next != NULL)
+	while (stack->next != NULL)
 	{
-		if (stack->stack_a->number > stack->stack_a->next->number)
+		if (stack->number <  stack->next->number)
 			return (1);
-		stack->stack_a = stack->stack_a->next;
+		stack = stack->next;
 	}
 	return (0);
+}
+
+int sort_check_asc(small_stack *stack)
+{
+	while (stack->next != NULL)
+	{
+		if (stack->number >  stack->next->number)
+			return (1);
+		stack = stack->next;
+	}
+	exit(0);
 }

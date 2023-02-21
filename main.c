@@ -69,42 +69,17 @@ int check_min_max(char **input, int amount)
 
 int main(int argc, char **argv)
 {
-	//char *s[20] = {"hah", "hah", "dd"}; // spr ktore musza byc static
-	//ft_printf(s[1]);
-	//(void)argv;
-	//(void)argc;
-	//write(2, "a", 1);
+	// spr ktore musza byc static
 	//if (argc < 3)
 	//	return (ft_printf("nic") && 1);
 	////if (check_if_number(argv, argc) || check_min_max(argv, argc) 
 	////	|| check_if_sorted(argv, argc))
 	////	return(write(0, "Error", 5));
-	//////print_stack(a);
-	////if (check_if_number(argv, argc))
-	////	return (ft_printf("no") && 1);
-	//if (check_duplicate(argv, argc))
-	//	return (ft_printf("dupl") && 1);
-	//ft_printf("haha");
 	big_stack *stack;
 
 	stack = arrange_stack(argv, argc);
-	//print_list(stack->stack_a);
-	//ft_printf("after 2x pb:\n");
-	//if (sort_check(stack))
-	//	ft_printf("sorted");
-	//else
-	//	ft_printf("nic");
 	radix(stack, argc);
-	int i = 0;
-	//while (++i <= lstsize(stack->stack_a))
-	//	{
-	//		ft_printf("hello");
-	//	}
-	//if (stack->stack_a->number & 1 << 1)
-	//	ft_printf("jest");
-	//ft_printf("%i\n", stack->stack_a->number);
-	//move_forward_a(stack);
-	//ft_printf("%i\n", stack->stack_a->number);
 	//print_list(stack->stack_a);
+	//move_backwards_a(stack);
 	return (0);
 }
