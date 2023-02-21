@@ -35,5 +35,6 @@ void push_a(big_stack *stack);
 int sort_check_desc(small_stack *stack);
 int sort_check_asc(small_stack *stack, big_stack *container);
 void radix(big_stack *stack, int size);
+void free_everything(big_stack *stack);
 
 #endif

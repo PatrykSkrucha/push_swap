@@ -1,7 +1,7 @@
-FILES = main.c ps_lists.c lists_utils.c radix.c
+FILES = push_swap.c ps_lists.c lists_utils.c radix.c
 OFILES = $(FILES:.c=.o)
 
-EMAIN = main
+EMAIN = push_swap
 
 HEADER = push_swap.h
 

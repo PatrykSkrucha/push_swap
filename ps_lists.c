@@ -166,7 +166,7 @@ int sort_check_desc(small_stack *stack)
 	return (0);
 }
 
-static void free_everything(big_stack *stack)
+void free_everything(big_stack *stack)
 {
 	small_stack *temp;
 	big_stack *temp_stack;

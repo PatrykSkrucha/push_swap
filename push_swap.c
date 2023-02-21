@@ -79,6 +79,7 @@ int main(int argc, char **argv)
 
 	stack = arrange_stack(argv, argc);
 	radix(stack, argc);
+	free_everything(stack);
 	//print_list(stack->stack_a);
 	//move_backwards_a(stack);
 	return (0);
