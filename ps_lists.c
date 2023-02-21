@@ -166,13 +166,17 @@ int sort_check_desc(small_stack *stack)
 	return (0);
 }
 
-int sort_check_asc(small_stack *stack)
+int sort_check_asc(small_stack *stack, big_stack *container)
 {
+	small_stack *head = stack;
 	while (stack->next != NULL)
 	{
 		if (stack->number >  stack->next->number)
 			return (1);
 		stack = stack->next;
 	}
-	exit(0);
+	//if (!container->stack_b)
+	//	exit (0);
+	//else
+		return (0);
 }
