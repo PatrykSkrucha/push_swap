@@ -75,19 +75,11 @@ int main(int argc, char **argv)
 	//	return(write(1, "Error\n", 6));
 	big_stack *stack;
 	stack = arrange_stack(argv, argc);
-	//radix(stack, argc);
+	radix(stack, argc);
 	//bubbleSort(argv, argc - 1);
 	//free_everything(stack);
 	//if(stack->stack_a->number < 0 && ((stack->stack_a->number * -1) >> 0 & 1))
 	//	ft_printf("haha");
 	//ft_printf("%i", sort_check_asc(stack->stack_a, stack));
-	print_list(stack->stack_a);
-	//move_backwards_a(stack);
-	push_b(stack);
-	ft_printf("\nlista b:\n");
-	print_list(stack->stack_b);
-	push_a(stack);
-	ft_printf("h\n\n");
-	print_list(stack->stack_a);
 	return (0);
 }

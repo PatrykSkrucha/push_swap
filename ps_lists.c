@@ -26,7 +26,7 @@ void print_list(small_stack *lst)
 {
 	while(lst != NULL)
 	{
-		ft_printf("data: %i || index: %i\n", lst->number, lst->index);
+		ft_printf("%i index: %i\n", lst->number, lst->index);
 		lst = lst->next;
 	}
 }
@@ -174,10 +174,9 @@ void push_a(big_stack *stack)
 
 int sort_check_desc(small_stack *stack)
 {
-	ft_printf("hh");
 	while (stack->next != NULL)
 	{
-		if (stack->number <  stack->next->number)
+		if (stack->index <  stack->next->index)
 			return (1);
 		stack = stack->next;
 	}
@@ -209,16 +208,17 @@ int sort_check_asc(small_stack *stack, big_stack *container)
 {
 	while (stack->next != NULL)
 	{
-		if (stack->number >  stack->next->number)
+		if (stack->index >  stack->next->index)
 			return (1);
 		stack = stack->next;
 	}
 	if (!container->stack_b)
 	{
-		return (0);
+		free_everything(container);
+		exit(0);
 	}
 	else
-		return (1);
+		return (0);
 }
 
 
