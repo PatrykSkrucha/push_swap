@@ -1,18 +1,18 @@
 #include "push_swap.h"
 #include <sys/wait.h>
 
-int max_bit(big_stack *stack)
+static int max_bit(small_stack *stack)
 {
 	int max;
 	int bits;
 
 	bits = 1;
-	max = stack->stack_a->number;
-	while (stack->stack_a)
+	max = stack->number;
+	while (stack)
 	{
-		if (stack->stack_a->number > max)
-			max = stack->stack_a->number;
-		stack->stack_a = stack->stack_a->next;
+		if (stack->number > max)
+			max = stack->number;
+		stack = stack->next;
 	}
 
 	while (max != 1 && max != -1)
@@ -31,9 +31,9 @@ void radix(big_stack *stack, int size)
 	int a;
 
 	a = -1;
-	max_bits = max_bit(stack);
+	max_bits = max_bit(stack->stack_a);
 	j = 0;
-	print_list(stack->stack_a);
+
 	while(++a < max_bits)
 	{
 		i = 0;
