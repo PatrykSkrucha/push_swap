@@ -2,6 +2,6 @@
 .DS_Store
 *.o
 *.a
-#push_swap
+push_swap
 .vscode
 checker_linux

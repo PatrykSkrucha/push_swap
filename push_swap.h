@@ -9,6 +9,7 @@
 typedef struct s_stack
 {
 	int				number;
+	unsigned int	index;
 	struct s_stack	*next;
 }	small_stack;
 
@@ -20,7 +21,7 @@ typedef struct two_stacks
 }	big_stack;
 
 
-small_stack	*new_list(int content);
+small_stack	*new_list(int content, int index);
 void print_list(small_stack *lst);
 small_stack	*lstlast(small_stack *lst);
 void	add_back(big_stack *lst, small_stack *new, int control);
@@ -36,5 +37,7 @@ int sort_check_desc(small_stack *stack);
 int sort_check_asc(small_stack *stack, big_stack *container);
 void radix(big_stack *stack, int size);
 void free_everything(big_stack *stack);
+void move_backwards_b(big_stack *stack);
+int *bubbleSort(char **input, int size);
 
 #endif

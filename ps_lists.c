@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-small_stack	*new_list(int content)
+small_stack	*new_list(int content, int index)
 {
 	small_stack	*new;
 
@@ -8,6 +8,7 @@ small_stack	*new_list(int content)
 	if (!new)
 		return (NULL);
 	new->number = content;
+	new->index = index;
 	new->next = NULL;
 	return (new);
 }
@@ -25,9 +26,15 @@ void print_list(small_stack *lst)
 {
 	while(lst != NULL)
 	{
-		ft_printf("%i\n", lst->number);
+		ft_printf("data: %i || index: %i\n", lst->number, lst->index);
 		lst = lst->next;
 	}
+}
+
+static int get_index(small_stack *lst)
+{
+	if (lst)
+		return (lst->index);
 }
 
 void	add_back(big_stack *lst, small_stack *new, int control)
@@ -73,7 +80,6 @@ void	add_front(big_stack *lst, small_stack *new, int control)
 int	lstsize(small_stack  *lst)
 {
 	int	i;
-
 	i = 0;
 	while (lst != NULL)
 	{
@@ -87,7 +93,7 @@ void move_forward_a(big_stack *stack)
 {
 	small_stack *head;
 
-	head = new_list(lstlast(stack->stack_a)->number);
+	head = new_list(lstlast(stack->stack_a)->number, get_index(stack->stack_a));
 	add_front(stack, head, 1);
 
 	while (stack->stack_a != NULL)
@@ -106,13 +112,24 @@ void move_forward_a(big_stack *stack)
 void move_backwards_a(big_stack *stack)
 {
 	small_stack *head;
-
 	if (lstsize(stack->stack_a) > 1)
 	{
 		head = stack->stack_a->next;
-		add_back(stack, new_list(stack->stack_a->number), 1);
+		add_back(stack, new_list(stack->stack_a->number, get_index(stack->stack_a)), 1);
 		free(stack->stack_a);
 		stack->stack_a = head;
+		ft_printf("ra\n");
+	}
+}
+void move_backwards_b(big_stack *stack)
+{
+	small_stack *head;
+	if (lstsize(stack->stack_b) > 1)
+	{
+		head = stack->stack_b->next;
+		add_back(stack, new_list(stack->stack_b->number, get_index(stack->stack_b)), 1);
+		free(stack->stack_b);
+		stack->stack_b = head;
 		ft_printf("ra\n");
 	}
 }
@@ -139,7 +156,7 @@ void push_b(big_stack *stack)
 {
 	if (stack->stack_a)
 	{
-		add_front(stack, new_list(stack->stack_a->number), 0);
+		add_front(stack, new_list(stack->stack_a->number, get_index(stack->stack_a)), 0);
 		del_first(stack, 1);
 		ft_printf("pb\n");
 	}
@@ -149,7 +166,7 @@ void push_a(big_stack *stack)
 {
 	if (stack->stack_b)
 	{
-		add_front(stack, new_list(stack->stack_b->number), 1);
+		add_front(stack, new_list(stack->stack_b->number, get_index(stack->stack_b)), 1);
 		del_first(stack, 0);
 		ft_printf("pa\n");
 	}
@@ -157,6 +174,7 @@ void push_a(big_stack *stack)
 
 int sort_check_desc(small_stack *stack)
 {
+	ft_printf("hh");
 	while (stack->next != NULL)
 	{
 		if (stack->number <  stack->next->number)
@@ -197,11 +215,11 @@ int sort_check_asc(small_stack *stack, big_stack *container)
 	}
 	if (!container->stack_b)
 	{
-		ft_printf("\nsorted list:\n");
-		print_list(container->stack_a);
-		free_everything(container);
-		exit (0);
+		return (0);
 	}
 	else
-		return (0);
+		return (1);
 }
+
+
+
