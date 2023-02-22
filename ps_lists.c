@@ -221,5 +221,3 @@ int sort_check_asc(small_stack *stack, big_stack *container)
 		return (0);
 }
 
-
-

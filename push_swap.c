@@ -75,6 +75,7 @@ int main(int argc, char **argv)
 	//	return(write(1, "Error\n", 6));
 	big_stack *stack;
 	stack = arrange_stack(argv, argc);
+	//print_list(stack->stack_a);
 	radix(stack, argc);
 	//bubbleSort(argv, argc - 1);
 	//free_everything(stack);
