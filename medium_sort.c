@@ -12,7 +12,7 @@ void medium_sort(big_stack *stack)
 		push_b(stack);
 	}
 	sort_three(stack);
-	if (stack->stack_b->next->index == max_index)
+	if (stack->stack_b->index == max_index - 1 && stack->stack_b->next->index == max_index)
 		move_backwards_b(stack);
 	//ft_printf("stack a:\n");
 	//print_list(stack->stack_a);
@@ -30,7 +30,7 @@ void medium_sort(big_stack *stack)
 		while (sort_check_asc(stack->stack_a, stack))
 		{
 			//sleep(1);
-			move_backwards_a(stack);
+			move_forward_a(stack);
 		}
 	}
 	//ft_printf("here stack: \n");

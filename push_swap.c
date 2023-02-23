@@ -81,9 +81,9 @@ int main(int argc, char **argv)
 	//	//ft_printf("hopla argc: %i", argc);
 	//	sort_three(stack);
 	//}
-	if (argc < 7)
-	//{
-		medium_sort(stack);
+	//if (argc < 7)
+	////{
+	//	medium_sort(stack);
 	//}
 	//		DODAC INDEXY ILE BITOW MA LICZBA
 	//print_list(stack->stack_a);
@@ -97,7 +97,8 @@ int main(int argc, char **argv)
 	//print_list(stack->stack_b);
 	//ft_printf("\n\npo a:\n\n");
 	//print_list(stack->stack_a);
-	//radix(stack, argc);
+	radix(stack, argc);
+	//print_list(stack->stack_a);
 	//sa(stack);
 	//free_everything(stack);
 	//bubbleSort(argv, argc - 1);

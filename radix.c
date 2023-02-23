@@ -10,11 +10,13 @@ static int max_bit(small_stack *stack)
 	max = stack->number;
 	while (stack)
 	{
-		if (stack->number > max)
+		if (stack->number > max || ((stack->number * -1) > max))
 			max = stack->number;
+		if (max < 0)
+			max *= -1;
 		stack = stack->next;
 	}
-
+	//ft_printf("max: %i\n", max);
 	while (max != 1 && max != -1)
 	{
 		max /= 2;
@@ -33,7 +35,7 @@ void radix(big_stack *stack, int size)
 	a = -1;
 	max_bits = max_bit(stack->stack_a);
 	j = 0;
-
+	//ft_printf("max bit: %i", max_bits);
 	while(++a < max_bits)
 	{
 		i = 0;
