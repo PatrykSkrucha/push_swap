@@ -37,16 +37,12 @@ void radix(big_stack *stack, int size)
 	while(++a < max_bits)
 	{
 		i = 0;
-		while (++i < size)
+		while (++i < size && sort_check_desc(stack->stack_a) && sort_check_asc(stack->stack_a, stack))
 		{
 			if (stack->stack_a->index >> j & 1)
-				{
-				
 				move_backwards_a(stack);
-				}
 			else
 				push_b(stack);
-
 		}
 		while (stack->stack_b)
 			push_a(stack);

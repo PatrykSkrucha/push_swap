@@ -39,5 +39,8 @@ void radix(big_stack *stack, int size);
 void free_everything(big_stack *stack);
 void move_backwards_b(big_stack *stack);
 int *bubbleSort(char **input, int size);
+void sa(big_stack *stack);
+void sort_three(big_stack *stack);
+void medium_sort(big_stack *stack);
 
 #endif

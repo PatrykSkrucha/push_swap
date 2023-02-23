@@ -76,7 +76,30 @@ int main(int argc, char **argv)
 	big_stack *stack;
 	stack = arrange_stack(argv, argc);
 	//print_list(stack->stack_a);
-	radix(stack, argc);
+	//if (argc == 4)
+	//{
+	//	//ft_printf("hopla argc: %i", argc);
+	//	sort_three(stack);
+	//}
+	if (argc < 7)
+	//{
+		medium_sort(stack);
+	//}
+	//		DODAC INDEXY ILE BITOW MA LICZBA
+	//print_list(stack->stack_a);
+	//push_b(stack);
+	//push_b(stack);
+	//move_backwards_b(stack);
+	////sort_three(stack);
+	//move_backwards_a(stack);
+
+	//ft_printf("\n\npo b:\n\n");
+	//print_list(stack->stack_b);
+	//ft_printf("\n\npo a:\n\n");
+	//print_list(stack->stack_a);
+	//radix(stack, argc);
+	//sa(stack);
+	//free_everything(stack);
 	//bubbleSort(argv, argc - 1);
 	//free_everything(stack);
 	//if(stack->stack_a->number < 0 && ((stack->stack_a->number * -1) >> 0 & 1))

@@ -1,4 +1,4 @@
-FILES = push_swap.c ps_lists.c lists_utils.c radix.c bubble_sort.c
+FILES = push_swap.c ps_lists.c lists_utils.c radix.c bubble_sort.c sort_three.c medium_sort.c
 OFILES = $(FILES:.c=.o)
 
 EMAIN = push_swap
