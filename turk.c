@@ -13,13 +13,14 @@ static void find_path_to_smaller(int *map, small_stack *stack, int number)
 	head = stack;
 	while (++i < size - 1)
 	{
-		
+		if (i == size - 2)
+			index = size - 1;
 		//ft_printf(">>>przed: %i   po: %i<<<",stack->number, stack->next->number);
-		if (stack->number > number && stack->next->number < number)
+		else if (stack->number > number && stack->next->number < number)
 		{
-			ft_printf("\n\n.....%i > %i && %i < %i??.......\n\nindex tu: %i", stack->number, number, stack->next->number, number, stack->next->index);
 			index = stack->next->index;
 		}
+		ft_printf("\n\n.....%i > %i && %i < %i??.......\n\nindex tu: %i", stack->number, number, stack->next->number, number, stack->next->index);
 		stack = stack->next; 
 	}
 	stack = head;
@@ -83,9 +84,11 @@ static void *check_for_steps(big_stack *stack, small_stack *node, int max, int m
 	//1 - rrr	4 - rb
 	//2 - ra	5 - rrb
 
+
+	ft_printf("checking for %i in stack:\n", node->number);
+	print_list(stack->stack_b);
 	int size = lstsize(stack->stack_a);
-	ft_printf("stack size: %i\n", size);
-	ft_printf(">>>>%i<<<<<<", node->number);
+	
 	if (node->index < size / 2)
 	{
 		//ft_printf("EEEEEEEEEEE");
@@ -158,25 +161,43 @@ print_list(container->stack_b);
 	container->stack_a = big_temp;
 }
 
+void clear_map(int *map)
+{
+	int i = -1;
+	while (++i < 6)
+		map[i] = 0;
+}
+
 void turk(big_stack *stack)
 {
 	int max;
 	int min;
 	int min_or_max;
+	int size;
+	small_stack *temp;
 	int map[6];
 	int i = -1;
-	
-	while (++i < 6)
+	clear_map(map);
+	size = lstsize(stack->stack_a);
+	while (++i < 5)
 		push_b(stack);
-	
-	ft_printf("stack przed:\n");
-	print_list(stack->stack_a);
-	find_max_and_min(stack->stack_b, &min, &max);
-	//ft_printf("min: %i max: %i", min, max);
-	update_map(stack->stack_a, map, stack, max, min);
+	temp = stack->stack_a;
+	//i = -1;
+	//while (++i < lstsize)
+	//{
+		find_max_and_min(stack->stack_b, &min, &max);
+	//ft_printf("stack przed:\n");
+	//print_list(stack->stack_a);
+		check_for_steps(stack, temp, max, min, map);
+
+		//update_map(stack->stack_a, map, stack, max, min);
+	//}
 	//stack->stack_a = temp;
 	//temp = stack->stack_a;
 	//push_b(stack);
+	i = -1;
+	while (++i<6)
+		ft_printf("||%i||\n", map[i]);
 	//push_b(stack);
 	//find_max_and_min(stack->stack_b, &min, &max);
 	free_everything(stack);
