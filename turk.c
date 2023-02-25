@@ -18,9 +18,9 @@ static void find_path_to_smaller(int *map, small_stack *stack, int number)
 		//ft_printf(">>>przed: %i   po: %i<<<",stack->number, stack->next->number);
 		else if (stack->number > number && stack->next->number < number)
 		{
+			ft_printf("\n\n.....%i > %i && %i < %i??.......\n\nindex tu: %i", stack->number, number, stack->next->number, number, stack->next->index);
 			index = stack->next->index;
 		}
-		ft_printf("\n\n.....%i > %i && %i < %i??.......\n\nindex tu: %i", stack->number, number, stack->next->number, number, stack->next->index);
 		stack = stack->next; 
 	}
 	stack = head;
