@@ -25,7 +25,7 @@ void print_list(small_stack *lst)
 {
 	while(lst != NULL)
 	{
-		ft_printf("number: %i\n", lst->number);
+		ft_printf("[%i] %i\n", lst->index, lst->number);
 		lst = lst->next;
 	}
 }
@@ -99,6 +99,7 @@ void move_forward_a(big_stack *stack)
 		stack->stack_a = stack->stack_a->next;
 	}
 	stack->stack_a = head;
+	set_index(stack->stack_a);
 	ft_printf("rra\n");
 }
 void move_forward_b(big_stack *stack)
@@ -118,6 +119,7 @@ void move_forward_b(big_stack *stack)
 		stack->stack_b = stack->stack_b->next;
 	}
 	stack->stack_b = head;
+	set_index(stack->stack_b);
 	ft_printf("rrb\n");
 }
 
@@ -130,6 +132,7 @@ void move_backwards_a(big_stack *stack)
 		add_back(stack, new_list(stack->stack_a->number), 1);
 		free(stack->stack_a);
 		stack->stack_a = head;
+		set_index(stack->stack_a);
 		ft_printf("ra\n");
 	}
 }
@@ -142,6 +145,7 @@ void move_backwards_b(big_stack *stack)
 		add_back(stack, new_list(stack->stack_b->number), 0);
 		free(stack->stack_b);
 		stack->stack_b = head;
+		set_index(stack->stack_b);
 		ft_printf("rb\n");
 	}
 }
@@ -170,6 +174,8 @@ void push_b(big_stack *stack)
 	{
 		add_front(stack, new_list(stack->stack_a->number), 0);
 		del_first(stack, 1);
+		set_index(stack->stack_a);
+		set_index(stack->stack_b);
 		ft_printf("pb\n");
 	}
 }
@@ -180,6 +186,8 @@ void push_a(big_stack *stack)
 	{
 		add_front(stack, new_list(stack->stack_b->number), 1);
 		del_first(stack, 0);
+		set_index(stack->stack_a);
+		set_index(stack->stack_b);
 		ft_printf("pa\n");
 	}
 }
@@ -244,5 +252,34 @@ void sa(big_stack *stack)
 	del_first(stack, 1);
 	add_front(stack, first, 1);
 	add_front(stack, second, 1);
+	set_index(stack->stack_a);
 	ft_printf("sa\n");
+}
+
+big_stack *arrange_stack(char **input, int amount)
+{
+	int i;
+	big_stack *stack;
+	
+	i = 0;
+	stack = (big_stack*)malloc(sizeof(big_stack));
+	if (!stack)
+		return (NULL);
+	while (++i < amount)
+		add_back(stack, new_list(ft_atoi(input[i])), 1);
+	set_index(stack->stack_a);
+	return (stack);
+}
+
+void set_index(small_stack *stack)
+{
+	int i;
+
+	i = 0;
+	while (stack)
+	{
+		stack->index = i;
+		i++;
+		stack = stack->next;
+	}
 }

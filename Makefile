@@ -1,7 +1,7 @@
-FILES = push_swap.c ps_lists.c lists_utils.c sort_three.c turk.c
+FILES = push_swap.c ps_lists.c sort_three.c turk.c
 OFILES = $(FILES:.c=.o)
 
-EMAIN = push_swap
+PUSH_SWAP = push_swap
 
 HEADER = push_swap.h
 
@@ -11,19 +11,19 @@ FLAGS = -Wall -Wextra -Werror
 
 RM = rm -f
 
-all: $(EMAIN)
+all: $(PUSH_SWAP)
 
-$(EMAIN): $(OFILES) $(HEADER) $(LIBFT)
-	cc $(FLAGS) $(OFILES) $(LIBFT) -o $(EMAIN)
+$(PUSH_SWAP): $(OFILES) $(HEADER) $(LIBFT)
+	cc $(FLAGS) $(OFILES) $(LIBFT) -o $(PUSH_SWAP)
 
 $(LIBFT):
 	make -C libft
 clean:
-	$(RM) $(EMAIN)
+	$(RM) $(OFILES)
 	make clean -C libft
 
 fclean: clean
-	$(RM) $(OFILES)
+	$(RM) $(PUSH_SWAP)
 	make fclean -C libft
 re: fclean all
 

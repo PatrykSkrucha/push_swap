@@ -77,5 +77,7 @@ int main(int argc, char **argv)
 	big_stack *stack;
 	stack = arrange_stack(argv, argc);
 	turk(stack);
+	
+	
 	return (0);
 }
