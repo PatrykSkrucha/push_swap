@@ -78,6 +78,7 @@ int main(int argc, char **argv)
 	stack = arrange_stack(argv, argc);
 	turk(stack);
 	
+	ft_printf("here");
 	
 	return (0);
 }
