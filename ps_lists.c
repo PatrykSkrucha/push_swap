@@ -100,7 +100,7 @@ void move_forward_a(big_stack *stack)
 	}
 	stack->stack_a = head;
 	set_index(stack->stack_a);
-	ft_printf("rra\n");
+	//ft_printf("rra\n");
 }
 void move_forward_b(big_stack *stack)
 {
@@ -120,7 +120,7 @@ void move_forward_b(big_stack *stack)
 	}
 	stack->stack_b = head;
 	set_index(stack->stack_b);
-	ft_printf("rrb\n");
+	//ft_printf("rrb\n");
 }
 
 void move_backwards_a(big_stack *stack)
