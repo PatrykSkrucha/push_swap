@@ -41,7 +41,7 @@ void free_everything(big_stack *stack);
 void move_backwards_b(big_stack *stack);
 void sa(big_stack *stack);
 void sort_three(big_stack *stack);
-void turk(big_stack *stack);
+char *turk(big_stack *stack);
 void set_index(small_stack *stack);
 
 #endif

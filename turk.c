@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-static void find_path_to_smaller(int *map, small_stack *stack, int number)
+static void find_path_to_smaller(int **map, small_stack *stack, int number)
 {
 	int index = 0;
 	small_stack *head;
@@ -8,7 +8,7 @@ static void find_path_to_smaller(int *map, small_stack *stack, int number)
 	int size;
 
 	size = lstsize(stack);
-	ft_printf("JESTEM liczba ||%i||\n", number);
+	//ft_printf("JESTEM liczba ||%i||\n", number);
 	i = -1;
 	head = stack;
 	while (++i < size - 1)
@@ -18,28 +18,20 @@ static void find_path_to_smaller(int *map, small_stack *stack, int number)
 		//ft_printf(">>>przed: %i   po: %i<<<",stack->number, stack->next->number);
 		if (stack->number > number && stack->next->number < number)
 		{
-			ft_printf("\n\n.....%i > %i && %i < %i??.......\n\nindex tu: %i", stack->number, number, stack->next->number, number, stack->next->index);
+			//ft_printf("\n\n.....%i > %i && %i < %i??.......\n\nindex tu: %i", stack->number, number, stack->next->number, number, stack->next->index);
 			index = stack->next->index;
 		}
 		stack = stack->next; 
 	}
+	ft_printf("size%i - index%i = ??", size, index);
 	stack = head;
-	ft_printf("index tu: %i\n", index);
-	if (index <= size / 2)
-	{
-		ft_printf("\n\nindex ze staku b%i\n\n", index);
-		map[4] = index;
-		map[5] = 0;
-	}
-	else
-	{
-		ft_printf("\n\nindex ze stakudddddd b%i & size %i\n\n", index, size);
-		map[4] = 0;
-		map[5] = size - index;
-	}
+	map[0][4] = index;							//first_path_a(map, node->index, size);
+	map[1][5] = size - index;							//second_path_a(map, node->index, size);
+	map[2][5] = size - index;	//third_path_a(map, node->index, size);
+	map[3][4] = index;	//fourth_path_a(map, node->index, size);
 }
 
-static void find_path_to_max(int *map, small_stack *stack, int max)
+static void find_path_to_max(int **map, small_stack *stack, int max)
 {
 	int max_index;
 	small_stack *head;
@@ -52,16 +44,10 @@ static void find_path_to_max(int *map, small_stack *stack, int max)
 		stack = stack->next;
 	}
 	stack = head;
-	if (max_index < size / 2)
-	{
-		map[4] = max_index;
-		map[5] = 0;
-	}
-	else
-	{
-		map[4] = 0;
-		map[5] = size - max_index;
-	}
+	map[0][4] = max_index;							//first_path_a(map, node->index, size);
+	map[1][5] = lstsize(stack) - max_index;							//second_path_a(map, node->index, size);
+	map[2][5] = lstsize(stack) - max_index;	//third_path_a(map, node->index, size);
+	map[3][4] = max_index;	//fourth_path_a(map, node->index, size);
 
 }
 
@@ -79,25 +65,19 @@ static void find_max_and_min(small_stack *stack, int *min, int *max)
 		}
 }
 
-static void *check_for_steps(big_stack *stack, small_stack *node, int max, int min, int *map)
+static void check_for_steps(big_stack *stack, small_stack *node, int max, int min, int **map)
 {
-
-	ft_printf("checking for %i in stack:\n", node->number);
+	
+	ft_printf("checking for %i: from stack\n", node->number);
+	print_list(stack->stack_a);
+	ft_printf("in stack:\n");
 	print_list(stack->stack_b);
 	int size = lstsize(stack->stack_a);
 	
-	if (node->index < size / 2)
-	{
-		//ft_printf("EEEEEEEEEEE");
-		map[2] = node->index;
-		map[3] = 0;
-	}
-	else
-	{
-		ft_printf("%i - %i = -1??", size, node->index);
-		map[2] = 0;
-		map[3] = size - node->index;
-	}
+	map[0][2] = node->index;							//first_path_a(map, node->index, size);
+	map[1][2] = node->index;							//second_path_a(map, node->index, size);
+	map[2][3] = lstsize(stack->stack_a) - node->index;	//third_path_a(map, node->index, size);
+	map[3][3] = lstsize(stack->stack_a) - node->index;	//fourth_path_a(map, node->index, size);
 	if (node->number < min || node->number > max)
 	{
 		find_path_to_max(map, stack->stack_b, max);
@@ -127,35 +107,35 @@ void send_map(big_stack *container, int *map, int index)
 	print_list(container->stack_a);
 }
 
-void update_map(small_stack *stack, int *map, big_stack *container, int max, int min)
-{
-	int i;
-	small_stack *big_temp;
-	big_stack *temp;
-	int size;
-	int a = -1;
+//void update_map(small_stack *stack, int *map, big_stack *container, int max, int min) //do poprawy
+//{
+//	int i;
+//	small_stack *big_temp;
+//	big_stack *temp;
+//	int size;
+//	int a = -1;
 
-	temp = container;
-	size = lstsize(container->stack_a);
-ft_printf("~~liczba: %i~~\n", stack->number);
-ft_printf("container\n");
-print_list(container->stack_b);
-	big_temp = container->stack_a;
-	while (++a < size)
-	{
-		int j = -1;
-		i = -1;
-		while (++i < 6)
-			map[i] = 0;
-		check_for_steps(temp, stack, max, min, map);
-		while (++j < 6)
-		{
-			ft_printf("%i\n", map[j]);
-		}
-		send_map(container, map, a);
-	}
-	container->stack_a = big_temp;
-}
+//	temp = container;
+//	size = lstsize(container->stack_a);
+//ft_printf("~~liczba: %i~~\n", stack->number);
+//ft_printf("container\n");
+//print_list(container->stack_b);
+//	big_temp = container->stack_a;
+//	while (++a < size)
+//	{
+//		int j = -1;
+//		i = -1;
+//		while (++i < 6)
+//			map[i] = 0;
+//		check_for_steps(temp, stack, max, min, map);
+//		while (++j < 6)
+//		{
+//			ft_printf("%i\n", map[j]);
+//		}
+//		send_map(container, map, a);
+//	}
+//	container->stack_a = big_temp;
+//}
 
 void clear_map(int **map)
 {
@@ -171,28 +151,59 @@ void clear_map(int **map)
 	}
 }
 
-void print_map(int *map)
+void print_map(int **map)
 {
-	int i = -1;
-	while (++i < 6)
+	int i;
+	int j;
+
+	j = -1;
+	while (++j < 4)
 	{
-		if (i == 0)
-			ft_printf("rr:	");
-		if (i == 1)
-			ft_printf("rrr:	");
-		if (i == 2)
-			ft_printf("ra:	");
-		if (i == 3)
-			ft_printf("rra:	");
-		if (i == 4)
-			ft_printf("rb:	");
-		if (i == 5)
-			ft_printf("rrb:	");
-		ft_printf("||%i||\n", map[i]);
+		if (j == 0)
+			ft_printf("first path:\n");
+		if (j == 1)
+			ft_printf("second path:\n");
+		if (j == 2)
+			ft_printf("third path\n");
+		if (j == 3)
+			ft_printf("fourth path:\n");
+		i = -1;
+		while (++i < 6)
+		{
+			if (i == 0)
+				ft_printf("rr:	");
+			if (i == 1)
+				ft_printf("rrr:	");
+			if (i == 2)
+				ft_printf("ra:	");
+			if (i == 3)
+				ft_printf("rra:	");
+			if (i == 4)
+				ft_printf("rb:	");
+			if (i == 5)
+				ft_printf("rrb:	");
+			ft_printf("||%i||\n", map[j][i]);
+		}
 	}
 }
 
-void turk(big_stack *stack)
+static int **allocate_map()
+{
+	int		i;
+	int	**map;
+
+	i = -1;
+	map = (int**)malloc(sizeof(int) * 4);
+	if (!map)
+		return (NULL);
+	while (++i < 4)
+	{
+		map[i] = (int*)malloc(sizeof(int) *6);
+	}
+	return (map);
+}
+
+char *turk(big_stack *stack)
 {
 	//0 - rr	3 - rra
 	//1 - rrr	4 - rb
@@ -202,28 +213,30 @@ void turk(big_stack *stack)
 	int min;
 	int min_or_max;
 	int size;
-	small_stack *temp;
-	int map[4][6];
 	int i = -1;
+	small_stack *temp;
+	int **map;
+	map = allocate_map();
 	clear_map(map);
 	size = lstsize(stack->stack_a);
 	while (++i < 5)
 		push_b(stack);
 	temp = stack->stack_a;
-	ft_printf("stack A przed:\n");
-	print_list(stack->stack_a);
-	ft_printf("stack B przed:\n");
-	print_list(stack->stack_b);
+	//ft_printf("stack A przed:\n");
+	//print_list(stack->stack_a);
+	//ft_printf("stack B przed:\n");
+	//print_list(stack->stack_b);
+	
 	find_max_and_min(stack->stack_b, &min, &max);
-	check_for_steps(stack, temp->next, max, min, map);
+	check_for_steps(stack, temp, max, min, map);
 
 		//update_map(stack->stack_a, map, stack, max, min);
 	//}
 	print_map(map);
-	ft_printf("stack A po:\n");
-	print_list(stack->stack_a);
-	ft_printf("stack B po:\n");
-	print_list(stack->stack_b);
+	//ft_printf("stack A po:\n");
+	//print_list(stack->stack_a);
+	//ft_printf("stack B po:\n");
+	//print_list(stack->stack_b);
 
 	
 	//stack->stack_a = temp;
@@ -233,4 +246,5 @@ void turk(big_stack *stack)
 	//push_b(stack);
 	//find_max_and_min(stack->stack_b, &min, &max);
 	free_everything(stack);
+	return (NULL);
 }
