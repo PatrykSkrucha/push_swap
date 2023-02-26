@@ -133,7 +133,7 @@ void move_backwards_a(big_stack *stack)
 		free(stack->stack_a);
 		stack->stack_a = head;
 		set_index(stack->stack_a);
-		ft_printf("ra\n");
+		//ft_printf("ra\n");
 	}
 }
 void move_backwards_b(big_stack *stack)
@@ -146,7 +146,7 @@ void move_backwards_b(big_stack *stack)
 		free(stack->stack_b);
 		stack->stack_b = head;
 		set_index(stack->stack_b);
-		ft_printf("rb\n");
+		//ft_printf("rb\n");
 	}
 }
 
@@ -282,4 +282,14 @@ void set_index(small_stack *stack)
 		i++;
 		stack = stack->next;
 	}
+}
+
+small_stack *get_node(small_stack *stack, int index)
+{
+	small_stack *temp;
+
+	temp = stack;
+	while (temp->index != index)
+		temp = temp->next;
+	return (temp);
 }

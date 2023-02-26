@@ -43,5 +43,6 @@ void sa(big_stack *stack);
 void sort_three(big_stack *stack);
 char *turk(big_stack *stack);
 void set_index(small_stack *stack);
+small_stack *get_node(small_stack *stack, int index);
 
 #endif
