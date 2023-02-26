@@ -106,24 +106,24 @@ static void check_for_steps(big_stack *stack, small_stack *node, int max, int mi
 	}
 }
 
-void send_map(big_stack *container, int *map, int index)
-{
-	ft_printf("CONTAINER BEFORE:\n");
-	print_list(container->stack_a);
+//void send_map(big_stack *container, int *map, int index)
+//{
+//	ft_printf("CONTAINER BEFORE:\n");
+//	print_list(container->stack_a);
 
-	int i;
-	small_stack *temp;
+//	int i;
+//	small_stack *temp;
 
-	temp = container->stack_a;
-	i = -1;
+//	temp = container->stack_a;
+//	i = -1;
 
-	while (++i < index)
-		container->stack_a = container->stack_a->next;
-	container->stack_a->map = map;
-	container->stack_a = temp;
-	ft_printf("CONTAINER AFTER:\n");
-	print_list(container->stack_a);
-}
+//	while (++i < index)
+//		container->stack_a = container->stack_a->next;
+//	container->stack_a->map = map;
+//	container->stack_a = temp;
+//	ft_printf("CONTAINER AFTER:\n");
+//	print_list(container->stack_a);
+//}
 
 //void update_map(small_stack *stack, int *map, big_stack *container, int max, int min) //do poprawy
 //{
@@ -318,7 +318,7 @@ static int *allocate_solution()
 
 static void send_number(int *solution, big_stack *stack)
 {
-	ft_printf("steps for algorithm:\n\n");
+	//ft_printf("steps for algorithm:\n\n");
 	while (solution[0] != 0)
 	{
 		solution[0]--;
@@ -359,7 +359,7 @@ static void send_number(int *solution, big_stack *stack)
 	}
 	push_b(stack);
 	ft_printf("pb\n");
-	ft_printf("the end\n\n");
+	//ft_printf("the end\n\n");
 }
 
 char *turk(big_stack *stack)
@@ -381,10 +381,10 @@ char *turk(big_stack *stack)
 	//while (++i < 10)
 	push_b(stack); //dopisac komende 2x
 	push_b(stack);
-	ft_printf("stack a before:\n\n");
-	print_list(stack->stack_a);
-	ft_printf("stack b before:\n\n");
-	print_list(stack->stack_b);
+	//ft_printf("stack a before:\n\n");
+	//print_list(stack->stack_a);
+	//ft_printf("stack b before:\n\n");
+	//print_list(stack->stack_b);
 	int k = -1;
 	int pushed_num;
 	while (lstsize(stack->stack_a) > 3)
@@ -405,7 +405,7 @@ char *turk(big_stack *stack)
 			if (count_steps(best_path) < steps)
 			{
 				steps = count_steps(best_path);
-				pushed_num = tempnode->number;
+				//pushed_num = tempnode->number;
 				//ft_printf("update best path for number: %i\n\n", pushed_num);
 				//print_best_path(best_path);
 				update_best_solution(best_path, best_solution);
