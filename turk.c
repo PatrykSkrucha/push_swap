@@ -1,5 +1,28 @@
 #include "push_swap.h"
 
+void shorten_way(int **map)
+{
+	int	i;
+
+	i = -1;
+	while (++i < 4)
+	{
+		while (map[i][2] > 0 && map[i][4] > 0)  // ra and rb into rr
+		{
+			map[i][0]++;
+			map[i][2]--;
+			map[i][4]--;
+		}
+		while (map[i][3] > 0 && map[i][5])		// rra and rrb into rrr
+		{
+			map[i][1]++;
+			map[i][3]--;
+			map[i][5]--;
+		}
+
+	}
+}
+
 static void find_path_to_smaller(int **map, small_stack *stack, int number)
 {
 	int index = 0;
@@ -68,10 +91,10 @@ static void find_max_and_min(small_stack *stack, int *min, int *max)
 static void check_for_steps(big_stack *stack, small_stack *node, int max, int min, int **map)
 {
 	
-	ft_printf("checking for %i: from stack\n", node->number);
-	print_list(stack->stack_a);
-	ft_printf("in stack:\n");
-	print_list(stack->stack_b);
+	//ft_printf("checking for %i: from stack\n", node->number);
+	//print_list(stack->stack_a);
+	//ft_printf("in stack:\n");
+	//print_list(stack->stack_b);
 	int size = lstsize(stack->stack_a);
 	
 	map[0][2] = node->index;							//first_path_a(map, node->index, size);
@@ -203,6 +226,8 @@ static int **allocate_map()
 	return (map);
 }
 
+
+
 char *turk(big_stack *stack)
 {
 	//0 - rr	3 - rra
@@ -228,10 +253,14 @@ char *turk(big_stack *stack)
 	//print_list(stack->stack_b);
 	
 	find_max_and_min(stack->stack_b, &min, &max);
-	check_for_steps(stack, temp, max, min, map);
+	check_for_steps(stack, temp->next, max, min, map);
 
 		//update_map(stack->stack_a, map, stack, max, min);
 	//}
+	ft_printf("map before:\n");
+	print_map(map);
+	shorten_way(map);
+	ft_printf("\n\nmap after:\n\n");
 	print_map(map);
 	//ft_printf("stack A po:\n");
 	//print_list(stack->stack_a);
