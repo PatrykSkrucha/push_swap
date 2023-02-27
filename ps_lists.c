@@ -176,7 +176,7 @@ void push_b(big_stack *stack)
 		del_first(stack, 1);
 		set_index(stack->stack_a);
 		set_index(stack->stack_b);
-		//ft_printf("pb\n");
+		ft_printf("pb\n");
 	}
 }
 

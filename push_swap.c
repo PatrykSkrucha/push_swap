@@ -78,7 +78,7 @@ int main(int argc, char **argv)
 	stack = arrange_stack(argv, argc);
 	turk(stack);
 	
-	ft_printf("here");
+	//ft_printf("here %i", lstsize(stack->stack_a));
 	
 	return (0);
 }
