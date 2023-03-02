@@ -21,9 +21,9 @@ small_stack	*lstlast(small_stack *lst)
 	return (lst);
 }
 
-void print_list(small_stack *lst)
+void	print_list(small_stack *lst)
 {
-	while(lst != NULL)
+	while (lst != NULL)
 	{
 		ft_printf("[%i] %i\n", lst->index, lst->number);
 		lst = lst->next;
@@ -61,18 +61,19 @@ void	add_front(big_stack *lst, small_stack *new, int control)
 	if (control)
 	{
 		new->next = lst->stack_a;
-		lst->stack_a = new;	
+		lst->stack_a = new;
 	}
 	else
 	{
 		new->next = lst->stack_b;
-		lst->stack_b = new;	
+		lst->stack_b = new;
 	}
 }
 
 int	lstsize(small_stack  *lst)
 {
 	int	i;
+
 	i = 0;
 	while (lst != NULL)
 	{
@@ -84,7 +85,7 @@ int	lstsize(small_stack  *lst)
 
 void move_forward_a(big_stack *stack)
 {
-	small_stack *head;
+	small_stack	*head;
 
 	head = new_list(lstlast(stack->stack_a)->number);
 	add_front(stack, head, 1);
@@ -100,11 +101,11 @@ void move_forward_a(big_stack *stack)
 	}
 	stack->stack_a = head;
 	set_index(stack->stack_a);
-	//ft_printf("rra\n");
 }
+
 void move_forward_b(big_stack *stack)
 {
-	small_stack *head;
+	small_stack	*head;
 
 	head = new_list(lstlast(stack->stack_b)->number);
 	add_front(stack, head, 0);
@@ -120,12 +121,12 @@ void move_forward_b(big_stack *stack)
 	}
 	stack->stack_b = head;
 	set_index(stack->stack_b);
-	//ft_printf("rrb\n");
 }
 
 void move_backwards_a(big_stack *stack)
 {
-	small_stack *head;
+	small_stack	*head;
+
 	if (lstsize(stack->stack_a) > 1)
 	{
 		head = stack->stack_a->next;
@@ -133,12 +134,13 @@ void move_backwards_a(big_stack *stack)
 		free(stack->stack_a);
 		stack->stack_a = head;
 		set_index(stack->stack_a);
-		//ft_printf("ra\n");
 	}
 }
+
 void move_backwards_b(big_stack *stack)
 {
-	small_stack *head;
+	small_stack	*head;
+
 	if (lstsize(stack->stack_b) > 1)
 	{
 		head = stack->stack_b->next;
@@ -146,13 +148,12 @@ void move_backwards_b(big_stack *stack)
 		free(stack->stack_b);
 		stack->stack_b = head;
 		set_index(stack->stack_b);
-		//ft_printf("rb\n");
 	}
 }
 
 void del_first(big_stack *stack, int control)
 {
-	small_stack *head;
+	small_stack	*head;
 
 	if (control)
 	{
@@ -192,21 +193,10 @@ void push_a(big_stack *stack)
 	}
 }
 
-int sort_check_desc(small_stack *stack)
-{
-	while (stack->next != NULL)
-	{
-		if (stack->number <  stack->next->number)
-			return (1);
-		stack = stack->next;
-	}
-	return (0);
-}
-
 void free_everything(big_stack *stack)
 {
-	small_stack *temp;
-	
+	small_stack	*temp;
+
 	temp = stack->stack_a;
 	while (stack->stack_a)
 	{
@@ -223,28 +213,11 @@ void free_everything(big_stack *stack)
 	free(stack);
 	exit(0);
 }
-int sort_check_asc(small_stack *stack, big_stack *container)
-{
-	while (stack->next != NULL)
-	{
-		if (stack->number >  stack->next->number)
-			return (1);
-		stack = stack->next;
-	}
-	if (!container->stack_b)
-	{
-		ft_printf("");
-		//print_list(container->stack_a);
-		//free_everything(container);
-		//exit(0);
-	}
-	return (0);
-}
 
 void sa(big_stack *stack)
 {
-	small_stack *first;
-	small_stack *second;
+	small_stack	*first;
+	small_stack	*second;
 
 	first = new_list(stack->stack_a->number);
 	second = new_list(stack->stack_a->next->number);
@@ -258,11 +231,11 @@ void sa(big_stack *stack)
 
 big_stack *arrange_stack(char **input, int amount)
 {
-	int i;
-	big_stack *stack;
-	
+	int			i;
+	big_stack	*stack;
+
 	i = 0;
-	stack = (big_stack*)malloc(sizeof(big_stack));
+	stack = (big_stack *)malloc(sizeof(big_stack));
 	if (!stack)
 		return (NULL);
 	while (++i < amount)
@@ -273,7 +246,7 @@ big_stack *arrange_stack(char **input, int amount)
 
 void set_index(small_stack *stack)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (stack)
@@ -284,9 +257,9 @@ void set_index(small_stack *stack)
 	}
 }
 
-small_stack *get_node(small_stack *stack, int index)
+small_stack	*get_node(small_stack *stack, int index)
 {
-	small_stack *temp;
+	small_stack	*temp;
 
 	temp = stack;
 	while (temp->index != index)
