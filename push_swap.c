@@ -77,7 +77,11 @@ int main(int argc, char **argv)
 	big_stack *stack;
 	stack = arrange_stack(argv, argc);
 	turk(stack);
-	
+	//ft_printf("stackaaaa a after:\n\n");
+	//print_list(stack->stack_a);
+	//if (!sort_check_asc(stack->stack_a, stack))
+	//	ft_printf("git");
+
 	//ft_printf("here %i", lstsize(stack->stack_a));
 	
 	return (0);

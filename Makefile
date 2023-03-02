@@ -16,6 +16,9 @@ all: $(PUSH_SWAP)
 $(PUSH_SWAP): $(OFILES) $(HEADER) $(LIBFT)
 	cc $(FLAGS) $(OFILES) $(LIBFT) -o $(PUSH_SWAP)
 
+%.o: %.c
+	cc $(FLAGS) -c $< -o $@
+
 $(LIBFT):
 	make -C libft
 clean:

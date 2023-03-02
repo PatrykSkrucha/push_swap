@@ -9,7 +9,7 @@
 typedef struct s_stack
 {
 	int				number;
-	unsigned	int	index;
+	int				index;
 	int				*map;
 	struct s_stack	*next;
 }	small_stack;

@@ -233,12 +233,12 @@ int sort_check_asc(small_stack *stack, big_stack *container)
 	}
 	if (!container->stack_b)
 	{
+		ft_printf("");
 		//print_list(container->stack_a);
-		free_everything(container);
-		exit(0);
+		//free_everything(container);
+		//exit(0);
 	}
-	else
-		return (0);
+	return (0);
 }
 
 void sa(big_stack *stack)

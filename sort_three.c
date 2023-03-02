@@ -15,14 +15,22 @@ void sort_three(big_stack *stack)
 	{
 		sa(stack);
 		move_forward_a(stack);
+		ft_printf("rra\n");
 	}
 	else if (first > second && second < third)
+	{
 		move_backwards_a(stack);
+		ft_printf("ra\n");
+	}
 	else if (first < second && second > third && first < third)
 	{
 		sa(stack);
 		move_backwards_a(stack);
+		ft_printf("ra\n");
 	}
 	else if(first < second && second > third)
+	{
 		move_forward_a(stack);
+		ft_printf("rra\n");
+	}
 }
