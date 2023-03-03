@@ -75,6 +75,7 @@ void	read_map_to_a(int *solution, t_two *stack)
 		ft_printf("rra\n");
 	}
 	push_a(stack);
+	ft_printf("pa\n");
 }
 
 int	*find_best_path_to_a(int **map)

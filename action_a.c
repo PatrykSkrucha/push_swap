@@ -20,7 +20,6 @@ void	push_a(t_two *stack)
 		del_first(stack, 0);
 		set_index(stack->stack_a);
 		set_index(stack->stack_b);
-		ft_printf("pa\n");
 	}
 }
 

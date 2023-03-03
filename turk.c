@@ -84,7 +84,7 @@ char	*turk(t_two *stack)
 	if (!map)
 		return (NULL);
 	i = -1;
-	while (++i < 2 && lstsize(stack->stack_a) > 3)
+	while (++i < 2 && lstsize(stack->stack_a) > 3 && ft_printf("pb\n"))
 		push_b(stack);
 	while (lstsize(stack->stack_a) > 3)
 		send_to_b(map, stack, min, max);

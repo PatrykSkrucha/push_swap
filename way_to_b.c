@@ -91,6 +91,7 @@ void	read_map_to_b(int *solution, t_two *stack)
 	while (solution[5] != 0 && solution[5]-- && ft_printf("rrb\n"))
 		move_forward_b(stack);
 	push_b(stack);
+	ft_printf("pb\n");
 }
 
 int	*best_solution(t_two *stack, t_map *map)
