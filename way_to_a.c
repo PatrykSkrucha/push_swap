@@ -48,8 +48,14 @@ void	path_to_greater(int **map, t_single *stack_a, int number)
 	map[3][3] = size - index;
 }
 
-void	to_a(t_two *stack, t_single *node, int min, int max, int **map)
+void	to_a(t_two *stack, t_single *node, int **map)
 {
+	int	min;
+	int	max;
+
+	min = INT_MIN;
+	max = INT_MAX;
+	find_max_and_min(stack->stack_a, &min, &max);
 	if (node->number < min || node->number > max)
 		find_path_to_min_a(stack->stack_a, min, map);
 	else

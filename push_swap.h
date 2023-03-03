@@ -62,7 +62,7 @@ int			check_if_sorted(char **input, int amount);
 int			check_min_max(char **input, int amount);
 int			count_steps(int *map);
 void		update_best_solution(int *best_path, int *best_solution);
-int			*best_solution(t_two *stack, int min, int max, t_map *map);
+int			*best_solution(t_two *stack, t_map *map);
 void		read_map_to_b(int *solution, t_two *stack);
 void		shorten_way(int **map);
 void		clear_map(int **map);
@@ -72,9 +72,10 @@ int			**allocate_map(void);
 t_map		*new_map(void);
 void		find_path_to_min_a(t_single *stack_a, int min, int **map);
 void		path_to_greater(int **map, t_single *stack_a, int number);
-void		to_a(t_two *stack, t_single *node, int min, int max, int **map);
+void		to_a(t_two *stack, t_single *node, int **map);
 void		read_map_to_a(int *solution, t_two *stack);
 int			*find_best_path_to_a(int **map);
 int			get_node_index(t_single *node, int number);
+void		find_max_and_min(t_single *stack, int *min, int *max);
 
 #endif

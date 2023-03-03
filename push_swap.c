@@ -65,5 +65,6 @@ int	main(int argc, char **argv)
 		sort_three(stack);
 	else
 		turk(stack);
+	free_everything(stack);
 	return (0);
 }

@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-static void	find_max_and_min(t_single *stack, int *min, int *max)
+void	find_max_and_min(t_single *stack, int *min, int *max)
 {
 	*min = stack->number;
 	*max = stack->number;
@@ -31,16 +31,15 @@ static void	send_to_b(t_map *map, t_two *stack, int min, int max)
 	clear_map(map->map);
 	clear_solution(map->best_solution);
 	find_max_and_min(stack->stack_b, &min, &max);
-	map->best_solution = best_solution(stack, min, max, map);
+	map->best_solution = best_solution(stack, map);
 	read_map_to_b(map->best_solution, stack);
 }
 
-void	send_to_a(t_map *map, t_two *stack, int min, int max)
+void	send_to_a(t_map *map, t_two *stack)
 {
 	clear_map(map->map);
 	clear_solution(map->best_solution);
-	find_max_and_min(stack->stack_a, &min, &max);
-	to_a(stack, get_node(stack->stack_b, 0), min, max, map->map);
+	to_a(stack, get_node(stack->stack_b, 0), map->map);
 	map->best_path = find_best_path_to_a(map->map);
 	read_map_to_a(map->best_path, stack);
 }
@@ -91,7 +90,7 @@ char	*turk(t_two *stack)
 		send_to_b(map, stack, min, max);
 	sort_three(stack);
 	while (lstsize(stack->stack_b) > 0)
-		send_to_a(map, stack, min, max);
+		send_to_a(map, stack);
 	ra_or_rra(stack, min, max);
 	return (NULL);
 }

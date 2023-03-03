@@ -52,8 +52,14 @@ static void	find_path_to_smaller(int **map, t_single *stack, int number)
 	map[3][4] = index;
 }
 
-void	check_path(t_two *stack, t_single *node, int min, int max, int **map)
+void	check_path(t_two *stack, t_single *node,int **map)
 {
+	int	min;
+	int	max;
+
+	min = INT_MIN;
+	max = INT_MAX;
+	find_max_and_min(stack->stack_b, &min, &max);
 	map[0][2] = node->index;
 	map[1][2] = node->index;
 	map[2][3] = lstsize(stack->stack_a) - node->index;
@@ -80,14 +86,14 @@ void	read_map_to_b(int *solution, t_two *stack)
 		move_backwards_a(stack);
 	while (solution[3] != 0 && solution[3]-- && ft_printf("rra\n"))
 		move_forward_a(stack);
-	while (solution[4] != 0  && solution[4]-- && ft_printf("rb\n"))
+	while (solution[4] != 0 && solution[4]-- && ft_printf("rb\n"))
 		move_backwards_b(stack);
 	while (solution[5] != 0 && solution[5]-- && ft_printf("rrb\n"))
 		move_forward_b(stack);
 	push_b(stack);
 }
 
-int	*best_solution(t_two *stack, int min, int max, t_map *map)
+int	*best_solution(t_two *stack, t_map *map)
 {
 	int	i;
 	int	steps;
@@ -97,7 +103,7 @@ int	*best_solution(t_two *stack, int min, int max, t_map *map)
 	while (++i < lstsize(stack->stack_a))
 	{
 		clear_map(map->map);
-		check_path(stack, get_node(stack->stack_a, i), min, max, map->map);
+		check_path(stack, get_node(stack->stack_a, i),map->map);
 		shorten_way(map->map);
 		map->best_path = find_best_path(map->map);
 		if (count_steps(map->best_path) < steps)
