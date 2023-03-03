@@ -1,75 +1,43 @@
 #include "push_swap.h"
 
-int	check_duplicate(char **input, int amount)
+static void	free_everything(t_two *stack)
 {
-	int	i;
-	int	j;
+	t_single	*temp;
 
-	i = 0;
-	while (++i < amount - 1)
+	temp = stack->stack_a;
+	while (stack->stack_a)
 	{
-		j = 1;
-		while (j + i < amount)
-		{
-			if (ft_atoi(input[i]) == ft_atoi(input[i + j]))
-				exit (1);
-			j++;
-		}
+		temp = stack->stack_a;
+		stack->stack_a = stack->stack_a->next;
+		free(temp);
 	}
-	return (0);
+	while (stack->stack_b)
+	{
+		temp = stack->stack_b;
+		stack->stack_b = stack->stack_b->next;
+		free(temp);
+	}
+	free(stack);
 }
 
-int	check_if_number(char **input, int amount)
+static t_two	*arrange_stack(char **input, int amount)
 {
-	int	i;
-	int	j;
-	int	len;
+	int			i;
+	t_two	*stack;
 
 	i = 0;
+	stack = (t_two *)malloc(sizeof(t_two));
+	if (!stack)
+		return (NULL);
 	while (++i < amount)
-	{
-		j = -1;
-		len = ft_strlen(input[i]);
-		while (++j < len)
-		{
-			if (input[i][j] == '-')
-				j++;
-			if (input[i][j] < 48 || input[i][j] > 57)
-				return (1);
-		}
-	}
-	return (0);
-}
-
-int	check_if_sorted(char **input, int amount)
-{
-	int	i;
-
-	i = 0;
-	while (++i < amount - 1)
-	{
-		if (ft_atoi(input[i]) > ft_atoi(input[i + 1]))
-			return (0);
-	}
-	return (1);
-}
-
-int	check_min_max(char **input, int amount)
-{
-	int	i;
-
-	i = 0;
-	while (++i < amount)
-	{
-		if (ft_atoi(input[i]) != ft_atoi_long(input[i]))
-			return (1);
-	}
-	return (0);
+		add_back(stack, new_list(ft_atoi(input[i])), 1);
+	set_index(stack->stack_a);
+	return (stack);
 }
 
 int	main(int argc, char **argv)
 {
-	big_stack	*stack;
+	t_two	*stack;
 
 	if (check_if_number(argv, argc) || check_min_max(argv, argc)
 		|| check_duplicate(argv, argc))
@@ -77,6 +45,12 @@ int	main(int argc, char **argv)
 	if (check_if_sorted(argv, argc))
 		return (0);
 	stack = arrange_stack(argv, argc);
-	turk(stack);
+	if (lstsize(stack->stack_a) == 2)
+		sa(stack);
+	else if (lstsize(stack->stack_a) == 3)
+		sort_three(stack);
+	else
+		turk(stack);
+	free_everything(stack);
 	return (0);
 }

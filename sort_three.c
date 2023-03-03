@@ -1,10 +1,36 @@
 #include "push_swap.h"
 
-void sort_three(big_stack *stack)
+static void	second_case(t_two *stack)
 {
-	int first;
-	int second;
-	int third;
+	sa(stack);
+	move_forward_a(stack);
+	ft_printf("rra\n");
+}
+
+static void	third_case(t_two *stack)
+{
+	move_backwards_a(stack);
+	ft_printf("ra\n");
+}
+
+static void	fourth_case(t_two *stack)
+{
+	sa(stack);
+	move_backwards_a(stack);
+	ft_printf("ra\n");
+}
+
+static void	fifth_case(t_two *stack)
+{
+	move_forward_a(stack);
+	ft_printf("rra\n");
+}
+
+void	sort_three(t_two *stack)
+{
+	int	first;
+	int	second;
+	int	third;
 
 	first = stack->stack_a->number;
 	second = stack->stack_a->next->number;
@@ -12,25 +38,11 @@ void sort_three(big_stack *stack)
 	if (first > second && second < third && first < third)
 		sa(stack);
 	else if (first > second && second > third)
-	{
-		sa(stack);
-		move_forward_a(stack);
-		ft_printf("rra\n");
-	}
+		second_case(stack);
 	else if (first > second && second < third)
-	{
-		move_backwards_a(stack);
-		ft_printf("ra\n");
-	}
+		third_case(stack);
 	else if (first < second && second > third && first < third)
-	{
-		sa(stack);
-		move_backwards_a(stack);
-		ft_printf("ra\n");
-	}
-	else if(first < second && second > third)
-	{
-		move_forward_a(stack);
-		ft_printf("rra\n");
-	}
+		fourth_case(stack);
+	else if (first < second && second > third)
+		fifth_case(stack);
 }
