@@ -1,16 +1,27 @@
-#ifndef PUSH_SWAP_H
-#define PUSH_SWAP_H
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pskrucha <pskrucha@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/03 15:17:21 by pskrucha          #+#    #+#             */
+/*   Updated: 2023/03/03 18:07:15 by pskrucha         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdlib.h>
-#include "libft/libft.h"
-#include <limits.h>
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
+
+# include <unistd.h>
+# include <stdlib.h>
+# include "libft/libft.h"
+# include <limits.h>
 
 typedef struct s_stack
 {
 	int				number;
 	int				index;
-	int				*map;
 	struct s_stack	*next;
 }	t_single;
 
@@ -26,12 +37,6 @@ typedef struct s_map
 	int	*best_path;
 	int	*best_solution;
 }	t_map;
-
-typedef struct s_min_max
-{
-	int	min;
-	int	max;
-}	t_min_max;
 
 t_single	*new_list(int content);
 t_single	*lstlast(t_single *lst);
@@ -57,7 +62,7 @@ int			check_if_sorted(char **input, int amount);
 int			check_min_max(char **input, int amount);
 int			count_steps(int *map);
 void		update_best_solution(int *best_path, int *best_solution);
-int			*best_solution(t_two *stack, t_min_max *min_max, t_map *map);
+int			*best_solution(t_two *stack, int min, int max, t_map *map);
 void		read_map_to_b(int *solution, t_two *stack);
 void		shorten_way(int **map);
 void		clear_map(int **map);
@@ -67,7 +72,7 @@ int			**allocate_map(void);
 t_map		*new_map(void);
 void		find_path_to_min_a(t_single *stack_a, int min, int **map);
 void		path_to_greater(int **map, t_single *stack_a, int number);
-void		to_a(t_two *stack, t_single *node, t_min_max *mm, int **map);
+void		to_a(t_two *stack, t_single *node, int min, int max, int **map);
 void		read_map_to_a(int *solution, t_two *stack);
 int			*find_best_path_to_a(int **map);
 int			get_node_index(t_single *node, int number);

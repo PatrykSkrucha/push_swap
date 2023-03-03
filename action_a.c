@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   action_a.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pskrucha <pskrucha@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/03 15:15:11 by pskrucha          #+#    #+#             */
+/*   Updated: 2023/03/03 18:06:30 by pskrucha         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	push_a(t_two *stack)
@@ -47,7 +59,6 @@ void	move_forward_a(t_two *stack)
 
 	head = new_list(lstlast(stack->stack_a)->number);
 	add_front(stack, head, 1);
-
 	while (stack->stack_a != NULL)
 	{
 		if (stack->stack_a->next->next == NULL)

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   lists_utils.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pskrucha <pskrucha@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/03 15:16:00 by pskrucha          #+#    #+#             */
+/*   Updated: 2023/03/03 17:52:51 by pskrucha         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 t_single	*new_list(int content)
@@ -8,6 +20,7 @@ t_single	*new_list(int content)
 	if (!new)
 		return (NULL);
 	new->number = content;
+	new->index = 0;
 	new->next = NULL;
 	return (new);
 }
@@ -20,7 +33,6 @@ t_single	*lstlast(t_single *lst)
 		lst = lst->next;
 	return (lst);
 }
-
 
 void	add_back(t_two *lst, t_single *new, int control)
 {

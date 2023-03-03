@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   action_b.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pskrucha <pskrucha@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/03 15:15:25 by pskrucha          #+#    #+#             */
+/*   Updated: 2023/03/03 15:15:40 by pskrucha         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	move_backwards_b(t_two *stack)
@@ -20,7 +32,6 @@ void	move_forward_b(t_two *stack)
 
 	head = new_list(lstlast(stack->stack_b)->number);
 	add_front(stack, head, 0);
-
 	while (stack->stack_b != NULL)
 	{
 		if (stack->stack_b->next->next == NULL)
@@ -45,4 +56,3 @@ void	push_b(t_two *stack)
 		ft_printf("pb\n");
 	}
 }
-

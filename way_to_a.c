@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   way_to_a.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pskrucha <pskrucha@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/03 15:18:36 by pskrucha          #+#    #+#             */
+/*   Updated: 2023/03/03 17:26:02 by pskrucha         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	find_path_to_min_a(t_single *stack_a, int min, int **map)
@@ -36,10 +48,10 @@ void	path_to_greater(int **map, t_single *stack_a, int number)
 	map[3][3] = size - index;
 }
 
-void	to_a(t_two *stack, t_single *node, t_min_max *mm, int **map)
+void	to_a(t_two *stack, t_single *node, int min, int max, int **map)
 {
-	if (node->number < mm->min || node->number > mm->max)
-		find_path_to_min_a(stack->stack_a, mm->min, map);
+	if (node->number < min || node->number > max)
+		find_path_to_min_a(stack->stack_a, min, map);
 	else
 		path_to_greater(map, stack->stack_a, node->number);
 }
@@ -57,7 +69,6 @@ void	read_map_to_a(int *solution, t_two *stack)
 		ft_printf("rra\n");
 	}
 	push_a(stack);
-
 }
 
 int	*find_best_path_to_a(int **map)

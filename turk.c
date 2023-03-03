@@ -1,45 +1,56 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   turk.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pskrucha <pskrucha@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/03 15:18:19 by pskrucha          #+#    #+#             */
+/*   Updated: 2023/03/03 17:48:47 by pskrucha         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-static void	find_max_and_min(t_single *stack, t_min_max *min_max)
+static void	find_max_and_min(t_single *stack, int *min, int *max)
 {
-	min_max->min = stack->number;
-	min_max->max = stack->number;
-
+	*min = stack->number;
+	*max = stack->number;
 	while (stack)
 	{
-		if (min_max->min > stack->number)
-			min_max->min = stack->number;
-		if (min_max->max < stack->number)
-			min_max->max = stack->number;
+		if (*min > stack->number)
+			*min = stack->number;
+		if (*max < stack->number)
+			*max = stack->number;
 		stack = stack->next;
 	}
 }
 
-static void	send_to_b(t_map *map, t_two *stack, t_min_max *min_max)
+static void	send_to_b(t_map *map, t_two *stack, int min, int max)
 {
 	clear_map(map->map);
 	clear_solution(map->best_solution);
-	find_max_and_min(stack->stack_b, min_max);
-	map->best_solution = best_solution(stack, min_max, map);
+	find_max_and_min(stack->stack_b, &min, &max);
+	map->best_solution = best_solution(stack, min, max, map);
 	read_map_to_b(map->best_solution, stack);
 }
 
-void	send_to_a(t_map *map, t_two *stack, t_min_max *min_max)
+void	send_to_a(t_map *map, t_two *stack, int min, int max)
 {
 	clear_map(map->map);
 	clear_solution(map->best_solution);
-	find_max_and_min(stack->stack_a, min_max);
-	to_a(stack, get_node(stack->stack_b, 0), min_max, map->map);
+	find_max_and_min(stack->stack_a, &min, &max);
+	to_a(stack, get_node(stack->stack_b, 0), min, max, map->map);
 	map->best_path = find_best_path_to_a(map->map);
 	read_map_to_a(map->best_path, stack);
 }
 
-static void	ra_or_rra(t_two *stack, t_min_max *min_max)
+static void	ra_or_rra(t_two *stack, int min, int max)
 {
 	int	index;
 
-	index = get_node_index(stack->stack_a, min_max->min);
-	find_max_and_min(stack->stack_a, min_max);
+	find_max_and_min(stack->stack_a, &min, &max);
+	index = get_node_index(stack->stack_a, min);
 	if (index <= lstsize(stack->stack_a) / 2)
 	{
 		while (index > 0)
@@ -63,24 +74,24 @@ static void	ra_or_rra(t_two *stack, t_min_max *min_max)
 
 char	*turk(t_two *stack)
 {
-	int			i;
-	t_min_max	*min_max;
-	t_map		*map;
+	int		i;
+	int		min;
+	int		max;
+	t_map	*map;
 
+	min = INT_MIN;
+	max = INT_MAX;
 	map = new_map();
 	if (!map)
-		return (NULL);
-	min_max = (t_min_max *)malloc(sizeof(t_min_max));
-	if (!min_max)
 		return (NULL);
 	i = -1;
 	while (++i < 2 && lstsize(stack->stack_a) > 3)
 		push_b(stack);
 	while (lstsize(stack->stack_a) > 3)
-		send_to_b(map, stack, min_max);
+		send_to_b(map, stack, min, max);
 	sort_three(stack);
 	while (lstsize(stack->stack_b) > 0)
-		send_to_a(map, stack, min_max);
-	ra_or_rra(stack, min_max);
+		send_to_a(map, stack, min, max);
+	ra_or_rra(stack, min, max);
 	return (NULL);
 }

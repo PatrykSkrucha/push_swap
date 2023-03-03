@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   map_utils2.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pskrucha <pskrucha@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/03 15:16:36 by pskrucha          #+#    #+#             */
+/*   Updated: 2023/03/03 18:07:04 by pskrucha         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	clear_solution(int *path)
@@ -26,13 +38,14 @@ int	**allocate_map(void)
 	int		**map;
 
 	i = -1;
-	map = (int **)malloc(sizeof(int) * 4);
+	map = (int **)malloc(sizeof(int *) * 4);
 	if (!map)
 		return (NULL);
 	while (++i < 4)
 	{
 		map[i] = (int *)malloc(sizeof(int) * 6);
 	}
+	clear_map(map);
 	return (map);
 }
 
@@ -62,4 +75,3 @@ void	clear_map(int **map)
 			map[i][j] = 0;
 	}
 }
-

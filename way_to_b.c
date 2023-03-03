@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   way_to_b.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pskrucha <pskrucha@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/03 15:18:52 by pskrucha          #+#    #+#             */
+/*   Updated: 2023/03/03 17:26:57 by pskrucha         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 static void	find_path_to_max_b(int **map, t_single *stack, int max)
@@ -40,14 +52,14 @@ static void	find_path_to_smaller(int **map, t_single *stack, int number)
 	map[3][4] = index;
 }
 
-void	check_path(t_two *stack, t_single *node, t_min_max *min_max, int **map)
+void	check_path(t_two *stack, t_single *node, int min, int max, int **map)
 {
 	map[0][2] = node->index;
 	map[1][2] = node->index;
 	map[2][3] = lstsize(stack->stack_a) - node->index;
 	map[3][3] = lstsize(stack->stack_a) - node->index;
-	if (node->number < min_max->min || node->number > min_max->max)
-		find_path_to_max_b(map, stack->stack_b, min_max->max);
+	if (node->number < min || node->number > max)
+		find_path_to_max_b(map, stack->stack_b, max);
 	else
 		find_path_to_smaller(map, stack->stack_b, node->number);
 }
@@ -75,7 +87,7 @@ void	read_map_to_b(int *solution, t_two *stack)
 	push_b(stack);
 }
 
-int	*best_solution(t_two *stack, t_min_max *min_max, t_map *map)
+int	*best_solution(t_two *stack, int min, int max, t_map *map)
 {
 	int	i;
 	int	steps;
@@ -85,7 +97,7 @@ int	*best_solution(t_two *stack, t_min_max *min_max, t_map *map)
 	while (++i < lstsize(stack->stack_a))
 	{
 		clear_map(map->map);
-		check_path(stack, get_node(stack->stack_a, i), min_max, map->map);
+		check_path(stack, get_node(stack->stack_a, i), min, max, map->map);
 		shorten_way(map->map);
 		map->best_path = find_best_path(map->map);
 		if (count_steps(map->best_path) < steps)

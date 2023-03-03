@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pskrucha <pskrucha@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/03 15:16:49 by pskrucha          #+#    #+#             */
+/*   Updated: 2023/03/03 18:04:01 by pskrucha         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 static void	free_everything(t_two *stack)
@@ -27,6 +39,8 @@ static t_two	*arrange_stack(char **input, int amount)
 
 	i = 0;
 	stack = (t_two *)malloc(sizeof(t_two));
+	stack->stack_a = NULL;
+	stack->stack_b = NULL;
 	if (!stack)
 		return (NULL);
 	while (++i < amount)
@@ -51,6 +65,5 @@ int	main(int argc, char **argv)
 		sort_three(stack);
 	else
 		turk(stack);
-	free_everything(stack);
 	return (0);
 }

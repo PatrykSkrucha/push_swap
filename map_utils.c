@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   map_utils.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pskrucha <pskrucha@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/03 15:16:29 by pskrucha          #+#    #+#             */
+/*   Updated: 2023/03/03 15:16:32 by pskrucha         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 int	*find_best_path(int **map)
@@ -7,7 +19,6 @@ int	*find_best_path(int **map)
 	int	counter;
 	int	temp;
 	int	map_index;
-
 
 	map_index = 0;
 	counter = INT_MAX;
