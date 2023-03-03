@@ -41,8 +41,9 @@ int	count_steps(int *map)
 
 void	update_best_solution(int *best_path, int *best_solution)
 {
-	int i = -1;
+	int	i;
 
+	i = -1;
 	while (++i < 6)
 		best_solution[i] = 0;
 	i = -1;
@@ -70,4 +71,15 @@ void	shorten_way(int **map)
 			map[i][5]--;
 		}
 	}
+}
+
+int	get_node_index(t_single *node, int number)
+{
+	while (node)
+	{
+		if (node->number == number)
+			return (node->index);
+		node = node->next;
+	}
+	return (0);
 }

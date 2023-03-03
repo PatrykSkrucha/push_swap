@@ -2,7 +2,7 @@
 
 static void	find_path_to_max_b(int **map, t_single *stack, int max)
 {
-	int				max_index;
+	int			max_index;
 	t_single	*head;
 
 	head = stack;

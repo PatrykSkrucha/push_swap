@@ -22,7 +22,7 @@ static void	free_everything(t_two *stack)
 
 static t_two	*arrange_stack(char **input, int amount)
 {
-	int			i;
+	int		i;
 	t_two	*stack;
 
 	i = 0;

@@ -63,13 +63,3 @@ void	clear_map(int **map)
 	}
 }
 
-int	get_node_index(t_single *node, int number)
-{
-	while (node)
-	{
-		if (node->number == number)
-			return (node->index);
-		node = node->next;
-	}
-	return (0);
-}

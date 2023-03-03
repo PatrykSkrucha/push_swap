@@ -2,7 +2,7 @@
 
 void	find_path_to_min_a(t_single *stack_a, int min, int **map)
 {
-	int				min_index;
+	int			min_index;
 	t_single	*head;
 
 	head = stack_a;
