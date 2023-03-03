@@ -16,6 +16,7 @@ static void	second_case(t_two *stack)
 {
 	sa(stack);
 	move_forward_a(stack);
+	ft_printf("sa\n");
 	ft_printf("rra\n");
 }
 
@@ -29,6 +30,7 @@ static void	fourth_case(t_two *stack)
 {
 	sa(stack);
 	move_backwards_a(stack);
+	ft_printf("sa\n");
 	ft_printf("ra\n");
 }
 
@@ -47,7 +49,7 @@ void	sort_three(t_two *stack)
 	first = stack->stack_a->number;
 	second = stack->stack_a->next->number;
 	third = stack->stack_a->next->next->number;
-	if (first > second && second < third && first < third)
+	if (first > second && second < third && first < third && ft_printf("sa\n"))
 		sa(stack);
 	else if (first > second && second > third)
 		second_case(stack);

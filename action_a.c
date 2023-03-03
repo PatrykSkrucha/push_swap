@@ -36,7 +36,6 @@ void	sa(t_two *stack)
 	add_front(stack, first, 1);
 	add_front(stack, second, 1);
 	set_index(stack->stack_a);
-	ft_printf("sa\n");
 }
 
 void	move_backwards_a(t_two *stack)
