@@ -6,7 +6,7 @@
 /*   By: pskrucha <pskrucha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 15:17:21 by pskrucha          #+#    #+#             */
-/*   Updated: 2023/03/04 16:30:24 by pskrucha         ###   ########.fr       */
+/*   Updated: 2023/03/04 19:33:01 by pskrucha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void		move_backwards_b(t_two *stack);
 void		sa(t_two *stack);
 void		sort_three(t_two *stack);
 char		*turk(t_two *stack);
-int			*find_best_path(int **map);
+void		find_best_path(t_map *map);
 void		set_index(t_single *stack);
 int			check_duplicate(char **input, int amount);
 int			check_if_number(char **input, int amount);
@@ -62,7 +62,7 @@ int			check_if_sorted(char **input, int amount);
 int			check_min_max(char **input, int amount);
 int			count_steps(int *map);
 void		update_best_solution(int *best_path, int *best_solution);
-int			*best_solution(t_two *stack, t_map *map);
+void		best_solution(t_two *stack, t_map *map);
 void		read_map_to_b(int *solution, t_two *stack);
 void		shorten_way(int **map);
 void		clear_map(int **map);
@@ -74,7 +74,7 @@ void		find_path_to_min_a(t_single *stack_a, int min, int **map);
 void		path_to_greater(int **map, t_single *stack_a, int number);
 void		to_a(t_two *stack, t_single *node, int **map);
 void		read_map_to_a(int *solution, t_two *stack);
-int			*find_best_path_to_a(int **map);
+void		find_best_path_to_a(t_map *map);
 int			get_node_index(t_single *node, int number);
 void		find_max_and_min(t_single *stack, int *min, int *max);
 void		free_map(t_map *map);

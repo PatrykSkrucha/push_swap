@@ -6,13 +6,13 @@
 /*   By: pskrucha <pskrucha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 15:16:29 by pskrucha          #+#    #+#             */
-/*   Updated: 2023/03/03 15:16:32 by pskrucha         ###   ########.fr       */
+/*   Updated: 2023/03/04 19:27:44 by pskrucha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	*find_best_path(int **map)
+void	find_best_path(t_map *map)
 {
 	int	i;
 	int	j;
@@ -28,14 +28,14 @@ int	*find_best_path(int **map)
 		temp = 0;
 		j = -1;
 		while (++j < 6)
-			temp += map[i][j];
+			temp += map->map[i][j];
 		if (temp < counter)
 		{
 			counter = temp;
 			map_index = i;
 		}
 	}
-	return (map[map_index]);
+	update_best_solution(map->map[map_index], map->best_path);
 }
 
 int	count_steps(int *map)

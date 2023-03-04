@@ -6,7 +6,7 @@
 /*   By: pskrucha <pskrucha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 15:18:52 by pskrucha          #+#    #+#             */
-/*   Updated: 2023/03/03 17:26:57 by pskrucha         ###   ########.fr       */
+/*   Updated: 2023/03/04 19:29:34 by pskrucha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ void	read_map_to_b(int *solution, t_two *stack)
 	ft_printf("pb\n");
 }
 
-int	*best_solution(t_two *stack, t_map *map)
+void	best_solution(t_two *stack, t_map *map)
 {
 	int	i;
 	int	steps;
@@ -106,7 +106,7 @@ int	*best_solution(t_two *stack, t_map *map)
 		clear_map(map->map);
 		check_path(stack, get_node(stack->stack_a, i), map->map);
 		shorten_way(map->map);
-		map->best_path = find_best_path(map->map);
+		find_best_path(map);
 		if (count_steps(map->best_path) < steps)
 		{
 			steps = count_steps(map->best_path);
@@ -114,5 +114,4 @@ int	*best_solution(t_two *stack, t_map *map)
 		}
 		clear_solution(map->best_path);
 	}
-	return (map->best_solution);
 }

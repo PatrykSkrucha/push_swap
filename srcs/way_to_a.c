@@ -6,7 +6,7 @@
 /*   By: pskrucha <pskrucha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 15:18:36 by pskrucha          #+#    #+#             */
-/*   Updated: 2023/03/03 17:26:02 by pskrucha         ###   ########.fr       */
+/*   Updated: 2023/03/04 19:34:52 by pskrucha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,10 +78,10 @@ void	read_map_to_a(int *solution, t_two *stack)
 	ft_printf("pa\n");
 }
 
-int	*find_best_path_to_a(int **map)
+void	find_best_path_to_a(t_map *map)
 {
-	if (map[1][2] <= map[3][3])
-		return (map[1]);
+	if (map->map[1][2] <= map->map[3][3])
+		update_best_solution(map->map[1], map->best_path);
 	else
-		return (map[3]);
+		update_best_solution(map->map[3], map->best_path);
 }

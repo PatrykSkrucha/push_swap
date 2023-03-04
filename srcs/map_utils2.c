@@ -6,7 +6,7 @@
 /*   By: pskrucha <pskrucha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 15:16:36 by pskrucha          #+#    #+#             */
-/*   Updated: 2023/03/04 16:37:49 by pskrucha         ###   ########.fr       */
+/*   Updated: 2023/03/04 19:38:00 by pskrucha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,7 @@ int	**allocate_map(void)
 	if (!map)
 		return (NULL);
 	while (++i < 4)
-	{
 		map[i] = (int *)malloc(sizeof(int) * 6);
-	}
 	clear_map(map);
 	return (map);
 }
@@ -65,13 +63,15 @@ void	clear_map(int **map)
 
 void	free_map(t_map *map)
 {
-	//int		i;
+	int	i;
 
-	//i = -1;
-	//while (++i < 4)
-		//free(map->map[i]);
+	i = -1;
+	while (++i < 4)
+	{
+		free(map->map[i]);
+	}
 	free(map->map);
-	free(map->best_path);
 	free(map->best_solution);
 	free(map);
+	free(map->best_path);
 }
