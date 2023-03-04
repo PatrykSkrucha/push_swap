@@ -2,11 +2,15 @@ FILES = push_swap.c lists_utils.c sort_three.c turk.c action_a.c \
 		action_b.c checkers.c way_to_b.c map_utils.c map_utils2.c \
 		way_to_a.c list_utils2.c \
 
-OFILES = $(FILES:.c=.o)
+SOURCES_DIRECTORY = srcs/
+
+SOURCES = $(addprefix $(SOURCES_DIRECTORY), $(FILES))
+
+OFILES = $(SOURCES:.c=.o)
 
 PUSH_SWAP = push_swap
 
-HEADER = push_swap.h
+HEADER = ./srcs/push_swap.h
 
 LIBFT = libft/libft.a
 
