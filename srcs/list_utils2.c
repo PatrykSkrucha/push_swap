@@ -6,7 +6,7 @@
 /*   By: pskrucha <pskrucha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 15:15:46 by pskrucha          #+#    #+#             */
-/*   Updated: 2023/03/04 19:37:27 by pskrucha         ###   ########.fr       */
+/*   Updated: 2023/03/04 21:18:32 by pskrucha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ t_map	*new_map(void)
 	if (!new)
 		return (NULL);
 	new->map = allocate_map();
-	new->best_solution = allocate_solution();
-	new->best_path = allocate_solution();
+	new->best_solution = ft_calloc(6, 4);
+	new->best_path = ft_calloc(6, 4);
 	return (new);
 }

@@ -6,7 +6,7 @@
 /*   By: pskrucha <pskrucha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 15:16:29 by pskrucha          #+#    #+#             */
-/*   Updated: 2023/03/04 19:27:44 by pskrucha         ###   ########.fr       */
+/*   Updated: 2023/03/04 21:24:34 by pskrucha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,9 @@ void	find_best_path(t_map *map)
 			map_index = i;
 		}
 	}
-	update_best_solution(map->map[map_index], map->best_path);
+	//update_best_solution(map->map[map_index], map->best_path);
+	ft_bzero(map->best_path, 6);
+	ft_memcpy(map->best_path, map->map[map_index], 6);
 }
 
 int	count_steps(int *map)
@@ -54,9 +56,7 @@ void	update_best_solution(int *best_path, int *best_solution)
 {
 	int	i;
 
-	i = -1;
-	while (++i < 6)
-		best_solution[i] = 0;
+	ft_bzero(best_solution, 6);
 	i = -1;
 	while (++i < 6)
 		best_solution[i] = best_path[i];

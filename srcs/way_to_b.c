@@ -6,7 +6,7 @@
 /*   By: pskrucha <pskrucha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 15:18:52 by pskrucha          #+#    #+#             */
-/*   Updated: 2023/03/04 19:29:34 by pskrucha         ###   ########.fr       */
+/*   Updated: 2023/03/04 21:14:16 by pskrucha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,6 @@ void	best_solution(t_two *stack, t_map *map)
 			steps = count_steps(map->best_path);
 			update_best_solution(map->best_path, map->best_solution);
 		}
-		clear_solution(map->best_path);
+		ft_bzero(map->best_path, 6);
 	}
 }

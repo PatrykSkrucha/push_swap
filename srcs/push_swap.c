@@ -6,7 +6,7 @@
 /*   By: pskrucha <pskrucha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 15:16:49 by pskrucha          #+#    #+#             */
-/*   Updated: 2023/03/04 18:14:46 by pskrucha         ###   ########.fr       */
+/*   Updated: 2023/03/04 20:34:27 by pskrucha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,6 @@ int	main(int argc, char **argv)
 	else
 		turk(stack);
 	free_everything(stack);
-	atexit(haha);
+	//atexit(haha);
 	return (0);
 }

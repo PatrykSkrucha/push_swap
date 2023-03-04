@@ -6,7 +6,7 @@
 /*   By: pskrucha <pskrucha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 15:18:19 by pskrucha          #+#    #+#             */
-/*   Updated: 2023/03/04 19:31:07 by pskrucha         ###   ########.fr       */
+/*   Updated: 2023/03/04 21:14:03 by pskrucha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	find_max_and_min(t_single *stack, int *min, int *max)
 static void	send_to_b(t_map *map, t_two *stack, int min, int max)
 {
 	clear_map(map->map);
-	clear_solution(map->best_solution);
+	ft_bzero(map->best_solution, 6);
 	find_max_and_min(stack->stack_b, &min, &max);
 	best_solution(stack, map);
 	read_map_to_b(map->best_solution, stack);
@@ -38,7 +38,7 @@ static void	send_to_b(t_map *map, t_two *stack, int min, int max)
 void	send_to_a(t_map *map, t_two *stack)
 {
 	clear_map(map->map);
-	clear_solution(map->best_solution);
+	ft_bzero(map->best_solution, 6);
 	to_a(stack, get_node(stack->stack_b, 0), map->map);
 	find_best_path_to_a(map);
 	read_map_to_a(map->best_path, stack);
