@@ -6,7 +6,7 @@
 /*   By: pskrucha <pskrucha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 15:18:19 by pskrucha          #+#    #+#             */
-/*   Updated: 2023/03/03 17:48:47 by pskrucha         ###   ########.fr       */
+/*   Updated: 2023/03/04 16:32:32 by pskrucha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,5 +92,6 @@ char	*turk(t_two *stack)
 	while (lstsize(stack->stack_b) > 0)
 		send_to_a(map, stack);
 	ra_or_rra(stack, min, max);
+	free_map(map);
 	return (NULL);
 }

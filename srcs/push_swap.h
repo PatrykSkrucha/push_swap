@@ -6,7 +6,7 @@
 /*   By: pskrucha <pskrucha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 15:17:21 by pskrucha          #+#    #+#             */
-/*   Updated: 2023/03/03 18:07:15 by pskrucha         ###   ########.fr       */
+/*   Updated: 2023/03/04 16:30:24 by pskrucha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,5 +77,6 @@ void		read_map_to_a(int *solution, t_two *stack);
 int			*find_best_path_to_a(int **map);
 int			get_node_index(t_single *node, int number);
 void		find_max_and_min(t_single *stack, int *min, int *max);
+void		free_map(t_map *map);
 
 #endif

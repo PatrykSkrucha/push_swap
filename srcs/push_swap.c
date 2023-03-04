@@ -6,7 +6,7 @@
 /*   By: pskrucha <pskrucha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 15:16:49 by pskrucha          #+#    #+#             */
-/*   Updated: 2023/03/03 18:04:01 by pskrucha         ###   ########.fr       */
+/*   Updated: 2023/03/04 16:27:56 by pskrucha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,11 @@ static t_two	*arrange_stack(char **input, int amount)
 	return (stack);
 }
 
+void	haha(void)
+{
+	system("leaks push_swap");
+}
+
 int	main(int argc, char **argv)
 {
 	t_two	*stack;
@@ -66,5 +71,6 @@ int	main(int argc, char **argv)
 	else
 		turk(stack);
 	free_everything(stack);
+	atexit(haha);
 	return (0);
 }

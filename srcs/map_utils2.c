@@ -6,7 +6,7 @@
 /*   By: pskrucha <pskrucha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 15:16:36 by pskrucha          #+#    #+#             */
-/*   Updated: 2023/03/03 18:07:04 by pskrucha         ###   ########.fr       */
+/*   Updated: 2023/03/04 16:37:49 by pskrucha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,19 +49,6 @@ int	**allocate_map(void)
 	return (map);
 }
 
-t_map	*new_map(void)
-{
-	t_map	*new;
-
-	new = (t_map *)malloc(sizeof(t_map));
-	if (!new)
-		return (NULL);
-	new->map = allocate_map();
-	new->best_path = allocate_solution();
-	new->best_solution = allocate_solution();
-	return (new);
-}
-
 void	clear_map(int **map)
 {
 	int	j;
@@ -74,4 +61,17 @@ void	clear_map(int **map)
 		while (++j < 6)
 			map[i][j] = 0;
 	}
+}
+
+void	free_map(t_map *map)
+{
+	//int		i;
+
+	//i = -1;
+	//while (++i < 4)
+		//free(map->map[i]);
+	free(map->map);
+	free(map->best_path);
+	free(map->best_solution);
+	free(map);
 }

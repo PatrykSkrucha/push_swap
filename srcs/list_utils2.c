@@ -6,7 +6,7 @@
 /*   By: pskrucha <pskrucha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 15:15:46 by pskrucha          #+#    #+#             */
-/*   Updated: 2023/03/03 18:06:42 by pskrucha         ###   ########.fr       */
+/*   Updated: 2023/03/04 16:36:13 by pskrucha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,17 @@ t_single	*get_node(t_single *stack, int index)
 	while (temp->index != index)
 		temp = temp->next;
 	return (temp);
+}
+
+t_map	*new_map(void)
+{
+	t_map	*new;
+
+	new = (t_map *)malloc(sizeof(t_map));
+	if (!new)
+		return (NULL);
+	new->map = allocate_map();
+	new->best_path = allocate_solution();
+	new->best_solution = allocate_solution();
+	return (new);
 }
