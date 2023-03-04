@@ -46,12 +46,12 @@ $(BONUS): $(OBONUS) $(OFILES) $(HEADERBONUS) $(LIBFT)
 $(LIBFT):
 	make -C libft
 clean:
-	$(RM) $(OFILES) $(OMAIN)
+	$(RM) $(OFILES) $(OMAIN) $(OBONUS)
 	make clean -C libft
 
 fclean: clean
-	$(RM) $(PUSH_SWAP)
+	$(RM) $(PUSH_SWAP) $(BONUS)
 	make fclean -C libft
 re: fclean all
 
-.PHONY: all clean fclean
+.PHONY: all clean fclean re bonus
