@@ -6,7 +6,7 @@
 /*   By: pskrucha <pskrucha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 15:16:29 by pskrucha          #+#    #+#             */
-/*   Updated: 2023/03/04 21:24:34 by pskrucha         ###   ########.fr       */
+/*   Updated: 2023/03/04 21:35:29 by pskrucha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,7 @@ void	find_best_path(t_map *map)
 			map_index = i;
 		}
 	}
-	//update_best_solution(map->map[map_index], map->best_path);
-	ft_bzero(map->best_path, 6);
-	ft_memcpy(map->best_path, map->map[map_index], 6);
+	update_best_solution(map->map[map_index], map->best_path);
 }
 
 int	count_steps(int *map)

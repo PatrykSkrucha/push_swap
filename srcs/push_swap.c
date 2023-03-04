@@ -6,7 +6,7 @@
 /*   By: pskrucha <pskrucha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 15:16:49 by pskrucha          #+#    #+#             */
-/*   Updated: 2023/03/04 20:34:27 by pskrucha         ###   ########.fr       */
+/*   Updated: 2023/03/04 23:38:24 by pskrucha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void	free_everything(t_two *stack)
 	free(stack);
 }
 
-static t_two	*arrange_stack(char **input, int amount)
+static	t_two	*arrange_stack(char **input, int amount)
 {
 	int		i;
 	t_two	*stack;
