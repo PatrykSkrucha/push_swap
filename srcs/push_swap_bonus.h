@@ -6,7 +6,7 @@
 /*   By: pskrucha <pskrucha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 15:17:21 by pskrucha          #+#    #+#             */
-/*   Updated: 2023/03/04 23:38:46 by pskrucha         ###   ########.fr       */
+/*   Updated: 2023/03/05 00:24:39 by pskrucha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ typedef struct s_map
 t_single	*new_list(int content);
 t_single	*lstlast(t_single *lst);
 t_single	*get_node(t_single *stack, int index);
+t_two		*arrange_stack(char **input, int amount);
+void		sb(t_two *stack);
 void		add_back(t_two *lst, t_single *new, int control);
 void		add_front(t_two *lst, t_single *new, int control);
 int			lstsize(t_single *lst);
@@ -76,6 +78,5 @@ void		find_best_path_to_a(t_map *map);
 int			get_node_index(t_single *node, int number);
 void		find_max_and_min(t_single *stack, int *min, int *max);
 void		free_map(t_map *map);
-
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: pskrucha <pskrucha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 15:15:46 by pskrucha          #+#    #+#             */
-/*   Updated: 2023/03/04 21:18:32 by pskrucha         ###   ########.fr       */
+/*   Updated: 2023/03/05 00:24:32 by pskrucha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,21 @@ t_map	*new_map(void)
 	new->best_solution = ft_calloc(6, 4);
 	new->best_path = ft_calloc(6, 4);
 	return (new);
+}
+
+t_two	*arrange_stack(char **input, int amount)
+{
+	int		i;
+	t_two	*stack;
+
+	i = 0;
+	stack = (t_two *)malloc(sizeof(t_two));
+	stack->stack_a = NULL;
+	stack->stack_b = NULL;
+	if (!stack)
+		return (NULL);
+	while (++i < amount)
+		add_back(stack, new_list(ft_atoi(input[i])), 1);
+	set_index(stack->stack_a);
+	return (stack);
 }

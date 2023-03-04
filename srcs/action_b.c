@@ -6,7 +6,7 @@
 /*   By: pskrucha <pskrucha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 15:15:25 by pskrucha          #+#    #+#             */
-/*   Updated: 2023/03/03 15:15:40 by pskrucha         ###   ########.fr       */
+/*   Updated: 2023/03/04 23:56:54 by pskrucha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,20 @@ void	move_backwards_b(t_two *stack)
 		stack->stack_b = head;
 		set_index(stack->stack_b);
 	}
+}
+
+void	sb(t_two *stack)
+{
+	t_single	*first;
+	t_single	*second;
+
+	first = new_list(stack->stack_b->number);
+	second = new_list(stack->stack_b->next->number);
+	del_first(stack, 0);
+	del_first(stack, 0);
+	add_front(stack, first, 0);
+	add_front(stack, second, 0);
+	set_index(stack->stack_b);
 }
 
 void	move_forward_b(t_two *stack)

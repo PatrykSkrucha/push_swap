@@ -6,7 +6,7 @@
 /*   By: pskrucha <pskrucha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 15:17:21 by pskrucha          #+#    #+#             */
-/*   Updated: 2023/03/04 23:38:13 by pskrucha         ###   ########.fr       */
+/*   Updated: 2023/03/04 23:52:40 by pskrucha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ typedef struct s_map
 t_single	*new_list(int content);
 t_single	*lstlast(t_single *lst);
 t_single	*get_node(t_single *stack, int index);
+t_two		*arrange_stack(char **input, int amount);
 void		add_back(t_two *lst, t_single *new, int control);
 void		add_front(t_two *lst, t_single *new, int control);
 int			lstsize(t_single *lst);

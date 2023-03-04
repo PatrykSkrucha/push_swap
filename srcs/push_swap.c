@@ -6,7 +6,7 @@
 /*   By: pskrucha <pskrucha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 15:16:49 by pskrucha          #+#    #+#             */
-/*   Updated: 2023/03/04 23:38:24 by pskrucha         ###   ########.fr       */
+/*   Updated: 2023/03/05 00:24:03 by pskrucha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,28 +32,6 @@ static void	free_everything(t_two *stack)
 	free(stack);
 }
 
-static	t_two	*arrange_stack(char **input, int amount)
-{
-	int		i;
-	t_two	*stack;
-
-	i = 0;
-	stack = (t_two *)malloc(sizeof(t_two));
-	stack->stack_a = NULL;
-	stack->stack_b = NULL;
-	if (!stack)
-		return (NULL);
-	while (++i < amount)
-		add_back(stack, new_list(ft_atoi(input[i])), 1);
-	set_index(stack->stack_a);
-	return (stack);
-}
-
-void	haha(void)
-{
-	system("leaks push_swap");
-}
-
 int	main(int argc, char **argv)
 {
 	t_two	*stack;
@@ -71,6 +49,5 @@ int	main(int argc, char **argv)
 	else
 		turk(stack);
 	free_everything(stack);
-	//atexit(haha);
 	return (0);
 }
