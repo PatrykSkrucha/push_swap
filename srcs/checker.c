@@ -17,18 +17,19 @@
 int	is_correct(t_two *stack)
 {
 	if (lstsize(stack->stack_b) > 0)
-		return (1);
+		return (0);
 	while (stack->stack_a->next)
 	{
 		if (stack->stack_a->number > stack->stack_a->next->number)
-			return (1);
+			return (0);
 		stack->stack_a = stack->stack_a->next;
 	}
-	return (0);
+	return (1);
 }
 
 void	perform_action(char *input, int *control, t_two *stack)
 {
+	//ft_printf("hello");
 	if (ft_strlen(input) == 3 && !ft_strncmp(input, "sa\n", 3))
 		sa(stack);
 	else if (ft_strlen(input) == 3 && !ft_strncmp(input, "sb\n", 3))
@@ -69,25 +70,25 @@ void	perform_action(char *input, int *control, t_two *stack)
 
 int main(int argc, char **argv)
 {
-	char	*input;
-	
+	char	*input = "";
+
 	size_t	amount;
 	t_two	*stack;
 	int		valid_command;
 
 	amount = 1;
+
 	valid_command = 1;
-	input = malloc(5);
 	stack = arrange_stack(argv, argc);
 	while (amount > 0 && valid_command)
 	{
-		amount = read(0, input, 4);
-		input[amount] = '\0';
-		if (!amount)
+		input = get_next_line(0);
+		if (!input)
 			break ;
 		perform_action(input, &valid_command, stack);
+		free(input);
 	}
-	if (is_correct(stack) || !valid_command)
+	if (!is_correct(stack) || !valid_command)
 		ft_printf("Error\n");
 	return (0);
 }

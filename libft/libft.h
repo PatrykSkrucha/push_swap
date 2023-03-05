@@ -74,5 +74,6 @@ void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 int		ft_printf(const char *s, ...);
 long	ft_atoi_long(char *str);
+char	*get_next_line(int fd);
 
 #endif

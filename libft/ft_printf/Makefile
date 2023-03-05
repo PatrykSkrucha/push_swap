@@ -7,12 +7,14 @@ CC				= cc
 RM				= rm -f
 CFLAGS			= -Wall -Wextra -Werror
 
+
+HEADER = ft_printf.h
 NAME			= libftprintf.a
 
 all:			$(NAME)
 
-$(NAME):		$(OBJS)
-				ar rcs $@ $^
+$(NAME):		$(OBJS) $(HEADER)
+				ar rcs $@ $<
 
 clean:
 				$(RM) $(OBJS)
