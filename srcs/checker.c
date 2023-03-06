@@ -19,12 +19,6 @@ int	main(int argc, char **argv)
 
 	validate_input(argv, argc);
 	stack = arrange_stack(argv, argc);
-	if (lstsize(stack->stack_a) < argc - 1)
-	{
-		free_stacks(stack);
-		ft_putstr_fd("Error\n", STDERR_FILENO);
-		return (1);
-	}
 	while (1)
 	{
 		command = get_next_line(0);
