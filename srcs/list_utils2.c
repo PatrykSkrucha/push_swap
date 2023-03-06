@@ -74,7 +74,7 @@ t_two	*arrange_stack(char **input, int amount)
 	i = 0;
 	stack = (t_two *)malloc(sizeof(t_two));
 	if (!stack)
-		return (NULL);
+		exit (1);
 	stack->stack_a = NULL;
 	stack->stack_b = NULL;
 	if (!stack)

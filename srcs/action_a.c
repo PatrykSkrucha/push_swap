@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void	pa(t_two *stack)
+int	pa(t_two *stack)
 {
 	if (stack->stack_b)
 	{
@@ -20,16 +20,18 @@ void	pa(t_two *stack)
 		del_first(stack, 0);
 		set_index(stack->stack_a);
 		set_index(stack->stack_b);
+		return (0);
 	}
+	return (1);
 }
 
-void	sa(t_two *stack)
+int	sa(t_two *stack)
 {
 	t_single	*first;
 	t_single	*second;
 
 	if (lstsize(stack->stack_a) <= 1)
-		return ;
+		return (1);
 	first = new_list(stack->stack_a->number);
 	second = new_list(stack->stack_a->next->number);
 	del_first(stack, 1);
@@ -37,9 +39,10 @@ void	sa(t_two *stack)
 	add_front(stack, first, 1);
 	add_front(stack, second, 1);
 	set_index(stack->stack_a);
+	return (0);
 }
 
-void	ra(t_two *stack)
+int	ra(t_two *stack)
 {
 	t_single	*head;
 
@@ -50,10 +53,12 @@ void	ra(t_two *stack)
 		free(stack->stack_a);
 		stack->stack_a = head;
 		set_index(stack->stack_a);
+		return (0);
 	}
+	return (1);
 }
 
-void	rra(t_two *stack)
+int	rra(t_two *stack)
 {
 	t_single	*head;
 
@@ -72,5 +77,7 @@ void	rra(t_two *stack)
 		}
 		stack->stack_a = head;
 		set_index(stack->stack_a);
+		return (0);
 	}
+	return (1);
 }

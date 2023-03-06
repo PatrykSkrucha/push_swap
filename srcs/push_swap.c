@@ -18,12 +18,13 @@ int	main(int argc, char **argv)
 
 	if (check_if_number(argv, argc) || check_min_max(argv, argc)
 		|| check_duplicate(argv, argc))
-		return (write(1, "Error\n", 6));
+	{
+		ft_putstr_fd("Error\n", STDERR_FILENO);
+		exit(EXIT_FAILURE);
+	}
 	if (check_if_sorted(argv, argc))
 		return (0);
 	stack = arrange_stack(argv, argc);
-	if (!stack)
-		return (1);
 	if (lstsize(stack->stack_a) == 2)
 		sa(stack);
 	else if (lstsize(stack->stack_a) == 3)

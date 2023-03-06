@@ -3,7 +3,7 @@ FILES = lists_utils.c sort_three.c turk.c action_a.c \
 		way_to_a.c list_utils2.c free_memory.c \
 
 MAIN = ./srcs/push_swap.c
-BONUSFILES = ./srcs/checker.c
+BONUSFILES = ./srcs/checker.c ./srcs/checker_utils.c \
 
 SOURCES_DIRECTORY = srcs/
 
