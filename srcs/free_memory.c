@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void	free_everything(t_two *stack)
+void	free_stacks(t_two *stack)
 {
 	t_single	*temp;
 

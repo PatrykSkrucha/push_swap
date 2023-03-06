@@ -78,7 +78,7 @@ void		find_best_path_to_a(t_map *map);
 int			get_node_index(t_single *node, int number);
 void		find_max_and_min(t_single *stack, int *min, int *max);
 void		free_map(t_map *map);
-void		free_everything(t_two *stack);
+void		free_stacks(t_two *stack);
 void		validate_input(char **argv, int argc);
 int			is_sorted_stack(t_single *stack);
 int			check_commands(char *command);

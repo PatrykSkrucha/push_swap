@@ -51,12 +51,12 @@ $(LIBFT):
 clean:
 	$(RM) $(OFILES) $(OMAIN) $(OBONUS)
 	make clean -C libft
-	@printf "\n$(YELLOW)Removing object files$(RESET)\n\n"
+	@printf "\n$(YELLOW)Removed object files$(RESET)\n\n"
 
 fclean: clean
 	$(RM) $(PUSH_SWAP) $(BONUS)
 	make fclean -C libft
-	@printf "\n$(RED)Everything cleaned up$(RESET)\n\n"
+	@printf "\n$(RED)Cleaned up everything$(RESET)\n\n"
 re: fclean all
 
 .PHONY: all clean fclean re bonus

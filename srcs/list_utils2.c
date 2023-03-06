@@ -82,7 +82,7 @@ t_two	*arrange_stack(char **input, int amount)
 	while (++i < amount)
 	{
 		if (add_back(stack, new_list(ft_atoi(input[i])), 1))
-			free_everything(stack);
+			free_stacks(stack);
 	}
 	set_index(stack->stack_a);
 	return (stack);

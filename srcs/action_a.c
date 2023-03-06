@@ -22,7 +22,7 @@ int	pa(t_two *stack)
 		set_index(stack->stack_b);
 		return (0);
 	}
-	return (1);
+	return (0);
 }
 
 int	sa(t_two *stack)
@@ -31,7 +31,7 @@ int	sa(t_two *stack)
 	t_single	*second;
 
 	if (lstsize(stack->stack_a) <= 1)
-		return (1);
+		return (0);
 	first = new_list(stack->stack_a->number);
 	second = new_list(stack->stack_a->next->number);
 	del_first(stack, 1);
@@ -55,7 +55,7 @@ int	ra(t_two *stack)
 		set_index(stack->stack_a);
 		return (0);
 	}
-	return (1);
+	return (0);
 }
 
 int	rra(t_two *stack)
@@ -79,5 +79,5 @@ int	rra(t_two *stack)
 		set_index(stack->stack_a);
 		return (0);
 	}
-	return (1);
+	return (0);
 }

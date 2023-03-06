@@ -42,7 +42,7 @@ void	perform_action(char *command, t_two *stack)
 		return ;
 	if (!ft_strncmp(command, "sb\n", 3) && !sb(stack))
 		return ;
-	if (!ft_strncmp(command, "ss\n", 3) && (!sa(stack) || !sb(stack)))
+	if (!ft_strncmp(command, "ss\n", 3) && !sa(stack) && !sb(stack))
 		return ;
 	if (!ft_strncmp(command, "pa\n", 3) && !pa(stack))
 		return ;
@@ -52,13 +52,13 @@ void	perform_action(char *command, t_two *stack)
 		return ;
 	if (!ft_strncmp(command, "rb\n", 3) && !rb(stack))
 		return ;
-	if (!ft_strncmp(command, "rr\n", 3) && (!ra(stack) || !rb(stack)))
+	if (!ft_strncmp(command, "rr\n", 3) && !ra(stack) && !rb(stack))
 		return ;
 	if (!ft_strncmp(command, "rra\n", 3) && !rra(stack))
 		return ;
 	if (!ft_strncmp(command, "rrb\n", 3) && !rrb(stack))
 		return ;
-	if (!ft_strncmp(command, "rrr\n", 3) && (!rra(stack) || !rrb(stack)))
+	if (!ft_strncmp(command, "rrr\n", 3) && !rra(stack) && !rrb(stack))
 		return ;
 }
 
@@ -66,7 +66,8 @@ void	parse_input(char *command, t_two *stack)
 {
 	if (!check_commands(command))
 	{
-		free_everything(stack);
+		free(command);
+		free_stacks(stack);
 		ft_printf("Error\n");
 		exit (255);
 	}

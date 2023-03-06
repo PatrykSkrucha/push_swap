@@ -19,12 +19,6 @@ int	main(int argc, char **argv)
 
 	validate_input(argv, argc);
 	stack = arrange_stack(argv, argc);
-	command = (char *)malloc(sizeof(char) * 5);
-	if (!command)
-	{
-		free(command);
-		return (1);
-	}
 	while (1)
 	{
 		command = get_next_line(0);
@@ -37,5 +31,6 @@ int	main(int argc, char **argv)
 		ft_printf("OK\n");
 	else
 		ft_printf("KO\n");
+	free_stacks(stack);
 	return (0);
 }

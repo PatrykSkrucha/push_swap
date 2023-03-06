@@ -25,7 +25,7 @@ int	rb(t_two *stack)
 		set_index(stack->stack_b);
 		return (0);
 	}
-	return (1);
+	return (0);
 }
 
 int	sb(t_two *stack)
@@ -34,7 +34,7 @@ int	sb(t_two *stack)
 	t_single	*second;
 
 	if (lstsize(stack->stack_b) <= 1)
-		return (1);
+		return (0);
 	first = new_list(stack->stack_b->number);
 	second = new_list(stack->stack_b->next->number);
 	del_first(stack, 0);
@@ -66,7 +66,7 @@ int	rrb(t_two *stack)
 		set_index(stack->stack_b);
 		return (0);
 	}
-	return (1);
+	return (0);
 }
 
 int	pb(t_two *stack)
@@ -79,5 +79,5 @@ int	pb(t_two *stack)
 		set_index(stack->stack_b);
 		return (0);
 	}
-	return (1);
+	return (0);
 }
