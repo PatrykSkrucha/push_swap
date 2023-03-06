@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void	move_backwards_b(t_two *stack)
+void	rb(t_two *stack)
 {
 	t_single	*head;
 
@@ -31,6 +31,8 @@ void	sb(t_two *stack)
 	t_single	*first;
 	t_single	*second;
 
+	if (lstsize(stack->stack_b) <= 1)
+		return ;
 	first = new_list(stack->stack_b->number);
 	second = new_list(stack->stack_b->next->number);
 	del_first(stack, 0);
@@ -40,26 +42,29 @@ void	sb(t_two *stack)
 	set_index(stack->stack_b);
 }
 
-void	move_forward_b(t_two *stack)
+void	rrb(t_two *stack)
 {
 	t_single	*head;
 
-	head = new_list(lstlast(stack->stack_b)->number);
-	add_front(stack, head, 0);
-	while (stack->stack_b != NULL)
+	if (lstsize(stack->stack_b) > 1)
 	{
-		if (stack->stack_b->next->next == NULL)
+		head = new_list(lstlast(stack->stack_b)->number);
+		add_front(stack, head, 0);
+		while (stack->stack_b != NULL)
 		{
-			free(stack->stack_b->next);
-			stack->stack_b->next = NULL;
+			if (stack->stack_b->next->next == NULL)
+			{
+				free(stack->stack_b->next);
+				stack->stack_b->next = NULL;
+			}
+			stack->stack_b = stack->stack_b->next;
 		}
-		stack->stack_b = stack->stack_b->next;
+		stack->stack_b = head;
+		set_index(stack->stack_b);
 	}
-	stack->stack_b = head;
-	set_index(stack->stack_b);
 }
 
-void	push_b(t_two *stack)
+void	pb(t_two *stack)
 {
 	if (stack->stack_a)
 	{

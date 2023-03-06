@@ -67,14 +67,14 @@ void	read_map_to_a(int *solution, t_two *stack)
 	while (solution[2] != 0 && solution[2]--)
 	{
 		ft_printf("ra\n");
-		move_backwards_a(stack);
+		ra(stack);
 	}
 	while (solution[3] != 0 && solution[3]--)
 	{
-		move_forward_a(stack);
+		rra(stack);
 		ft_printf("rra\n");
 	}
-	push_a(stack);
+	pa(stack);
 	ft_printf("pa\n");
 }
 

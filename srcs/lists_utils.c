@@ -34,16 +34,18 @@ t_single	*lstlast(t_single *lst)
 	return (lst);
 }
 
-void	add_back(t_two *lst, t_single *new, int control)
+int	add_back(t_two *lst, t_single *new, int control)
 {
 	t_single	*temp;
 
+	if (!new)
+		return (1);
 	if (control)
 	{
 		if (lst->stack_a == NULL)
 		{
 			lst->stack_a = new;
-			return ;
+			return (0);
 		}
 		temp = lstlast(lst->stack_a);
 		temp->next = new;
@@ -53,11 +55,12 @@ void	add_back(t_two *lst, t_single *new, int control)
 		if (lst->stack_b == NULL)
 		{
 			lst->stack_b = new;
-			return ;
+			return (0);
 		}
 		temp = lstlast(lst->stack_b);
 		temp->next = new;
 	}
+	return (0);
 }
 
 void	add_front(t_two *lst, t_single *new, int control)

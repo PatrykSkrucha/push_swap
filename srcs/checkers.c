@@ -24,7 +24,7 @@ int	check_duplicate(char **input, int amount)
 		while (j + i < amount)
 		{
 			if (ft_atoi(input[i]) == ft_atoi(input[i + j]))
-				exit (1);
+				return (1);
 			j++;
 		}
 	}

@@ -15,28 +15,28 @@
 static void	second_case(t_two *stack)
 {
 	sa(stack);
-	move_forward_a(stack);
+	rra(stack);
 	ft_printf("sa\n");
 	ft_printf("rra\n");
 }
 
 static void	third_case(t_two *stack)
 {
-	move_backwards_a(stack);
+	ra(stack);
 	ft_printf("ra\n");
 }
 
 static void	fourth_case(t_two *stack)
 {
 	sa(stack);
-	move_backwards_a(stack);
+	ra(stack);
 	ft_printf("sa\n");
 	ft_printf("ra\n");
 }
 
 static void	fifth_case(t_two *stack)
 {
-	move_forward_a(stack);
+	rra(stack);
 	ft_printf("rra\n");
 }
 

@@ -74,23 +74,23 @@ void	read_map_to_b(int *solution, t_two *stack)
 {
 	while (solution[0] != 0 && solution[0]-- && ft_printf("rr\n"))
 	{
-		move_backwards_a(stack);
-		move_backwards_b(stack);
+		ra(stack);
+		rb(stack);
 	}
 	while (solution[1] != 0 && solution[1]-- && ft_printf("rrr\n"))
 	{
-		move_forward_a(stack);
-		move_forward_b(stack);
+		rra(stack);
+		rrb(stack);
 	}
 	while (solution[2] != 0 && solution[2]-- && ft_printf("ra\n"))
-		move_backwards_a(stack);
+		ra(stack);
 	while (solution[3] != 0 && solution[3]-- && ft_printf("rra\n"))
-		move_forward_a(stack);
+		rra(stack);
 	while (solution[4] != 0 && solution[4]-- && ft_printf("rb\n"))
-		move_backwards_b(stack);
+		rb(stack);
 	while (solution[5] != 0 && solution[5]-- && ft_printf("rrb\n"))
-		move_forward_b(stack);
-	push_b(stack);
+		rrb(stack);
+	pb(stack);
 	ft_printf("pb\n");
 }
 

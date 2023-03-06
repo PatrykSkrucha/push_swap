@@ -14,13 +14,13 @@
 
 void	find_max_and_min(t_single *stack, int *min, int *max)
 {
-	*min = stack->number;
-	*max = stack->number;
+	*min = INT_MAX;
+	*max = INT_MIN;
 	while (stack)
 	{
-		if (*min > stack->number)
+		if (stack->number < *min)
 			*min = stack->number;
-		if (*max < stack->number)
+		if (stack->number > *max)
 			*max = stack->number;
 		stack = stack->next;
 	}
@@ -54,7 +54,7 @@ static void	ra_or_rra(t_two *stack, int min, int max)
 	{
 		while (index > 0)
 		{
-			move_backwards_a(stack);
+			ra(stack);
 			ft_printf("ra\n");
 			index--;
 		}
@@ -64,7 +64,7 @@ static void	ra_or_rra(t_two *stack, int min, int max)
 		index = lstsize(stack->stack_a) - index;
 		while (index > 0)
 		{
-			move_forward_a(stack);
+			rra(stack);
 			ft_printf("rra\n");
 			index--;
 		}
@@ -85,7 +85,7 @@ char	*turk(t_two *stack)
 		return (NULL);
 	i = -1;
 	while (++i < 2 && lstsize(stack->stack_a) > 3 && ft_printf("pb\n"))
-		push_b(stack);
+		pb(stack);
 	while (lstsize(stack->stack_a) > 3)
 		send_to_b(map, stack, min, max);
 	sort_three(stack);

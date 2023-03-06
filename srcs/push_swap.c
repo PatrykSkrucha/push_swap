@@ -12,26 +12,6 @@
 
 #include "push_swap.h"
 
-static void	free_everything(t_two *stack)
-{
-	t_single	*temp;
-
-	temp = stack->stack_a;
-	while (stack->stack_a)
-	{
-		temp = stack->stack_a;
-		stack->stack_a = stack->stack_a->next;
-		free(temp);
-	}
-	while (stack->stack_b)
-	{
-		temp = stack->stack_b;
-		stack->stack_b = stack->stack_b->next;
-		free(temp);
-	}
-	free(stack);
-}
-
 int	main(int argc, char **argv)
 {
 	t_two	*stack;
@@ -42,6 +22,8 @@ int	main(int argc, char **argv)
 	if (check_if_sorted(argv, argc))
 		return (0);
 	stack = arrange_stack(argv, argc);
+	if (!stack)
+		return (1);
 	if (lstsize(stack->stack_a) == 2)
 		sa(stack);
 	else if (lstsize(stack->stack_a) == 3)

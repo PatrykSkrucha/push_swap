@@ -73,12 +73,17 @@ t_two	*arrange_stack(char **input, int amount)
 
 	i = 0;
 	stack = (t_two *)malloc(sizeof(t_two));
+	if (!stack)
+		return (NULL);
 	stack->stack_a = NULL;
 	stack->stack_b = NULL;
 	if (!stack)
 		return (NULL);
 	while (++i < amount)
-		add_back(stack, new_list(ft_atoi(input[i])), 1);
+	{
+		if (add_back(stack, new_list(ft_atoi(input[i])), 1))
+			free_everything(stack);
+	}
 	set_index(stack->stack_a);
 	return (stack);
 }
