@@ -48,7 +48,7 @@ void	path_to_greater(int **map, t_single *stack_a, int number)
 	map[3][3] = size - index;
 }
 
-void	to_a(t_two *stack, t_single *node, int **map)
+void	path_to_a(t_two *stack, t_single *node, int **map)
 {
 	int	min;
 	int	max;

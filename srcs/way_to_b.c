@@ -52,7 +52,7 @@ static void	find_path_to_smaller(int **map, t_single *stack, int number)
 	map[3][4] = index;
 }
 
-void	check_path(t_two *stack, t_single *node, int **map)
+static void	check_paths(t_two *stack, t_single *node, int **map)
 {
 	int	min;
 	int	max;
@@ -104,7 +104,7 @@ void	best_solution(t_two *stack, t_map *map)
 	while (++i < lstsize(stack->stack_a))
 	{
 		clear_map(map->map);
-		check_path(stack, get_node(stack->stack_a, i), map->map);
+		check_paths(stack, get_node(stack->stack_a, i), map->map);
 		shorten_way(map->map);
 		find_best_path(map);
 		if (count_steps(map->best_path) < steps)

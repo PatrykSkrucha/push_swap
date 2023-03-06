@@ -72,7 +72,7 @@ int			**allocate_map(void);
 t_map		*new_map(void);
 void		find_path_to_min_a(t_single *stack_a, int min, int **map);
 void		path_to_greater(int **map, t_single *stack_a, int number);
-void		to_a(t_two *stack, t_single *node, int **map);
+void		path_to_a(t_two *stack, t_single *node, int **map);
 void		read_map_to_a(int *solution, t_two *stack);
 void		find_best_path_to_a(t_map *map);
 int			get_node_index(t_single *node, int number);

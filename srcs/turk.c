@@ -35,11 +35,11 @@ static void	send_to_b(t_map *map, t_two *stack, int min, int max)
 	read_map_to_b(map->best_solution, stack);
 }
 
-void	send_to_a(t_map *map, t_two *stack)
+static void	send_to_a(t_map *map, t_two *stack)
 {
 	clear_map(map->map);
 	ft_bzero(map->best_solution, 6);
-	to_a(stack, get_node(stack->stack_b, 0), map->map);
+	path_to_a(stack, get_node(stack->stack_b, 0), map->map);
 	find_best_path_to_a(map);
 	read_map_to_a(map->best_path, stack);
 }
@@ -84,7 +84,7 @@ char	*turk(t_two *stack)
 	if (!map)
 	{
 		free_stacks(stack);
-		return (NULL);
+		exit (EXIT_FAILURE);
 	}
 	i = -1;
 	while (++i < 2 && lstsize(stack->stack_a) > 3 && ft_printf("pb\n"))

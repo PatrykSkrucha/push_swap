@@ -71,6 +71,7 @@ t_map	*new_map(void)
 	if (!new->best_path || !new->best_solution)
 	{
 		free_map(new);
+		return (NULL);
 	}
 	return (new);
 }
