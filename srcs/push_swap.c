@@ -20,7 +20,7 @@ int	main(int argc, char **argv)
 		|| check_duplicate(argv, argc))
 	{
 		ft_putstr_fd("Error\n", STDERR_FILENO);
-		exit(EXIT_FAILURE);
+		return (1);
 	}
 	if (check_if_sorted(argv, argc))
 		return (0);

@@ -42,7 +42,9 @@ void	free_map(t_map *map)
 		free(map->map[i]);
 	}
 	free(map->map);
-	free(map->best_solution);
+	if (map->best_solution)
+		free(map->best_solution);
+	if (map->best_path)
+		free(map->best_path);
 	free(map);
-	free(map->best_path);
 }

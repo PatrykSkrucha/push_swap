@@ -61,8 +61,17 @@ t_map	*new_map(void)
 	if (!new)
 		return (NULL);
 	new->map = allocate_map();
+	if (!new->map)
+	{
+		free(new);
+		return (NULL);
+	}
 	new->best_solution = ft_calloc(6, 4);
 	new->best_path = ft_calloc(6, 4);
+	if (!new->best_path || !new->best_solution)
+	{
+		free_map(new);
+	}
 	return (new);
 }
 
@@ -74,15 +83,16 @@ t_two	*arrange_stack(char **input, int amount)
 	i = 0;
 	stack = (t_two *)malloc(sizeof(t_two));
 	if (!stack)
-		exit (1);
+		exit (EXIT_FAILURE);
 	stack->stack_a = NULL;
 	stack->stack_b = NULL;
-	if (!stack)
-		return (NULL);
 	while (++i < amount)
 	{
 		if (add_back(stack, new_list(ft_atoi(input[i])), 1))
+		{
 			free_stacks(stack);
+			exit (EXIT_FAILURE);
+		}
 	}
 	set_index(stack->stack_a);
 	return (stack);

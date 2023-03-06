@@ -14,15 +14,28 @@
 
 int	**allocate_map(void)
 {
-	int		i;
-	int		**map;
+	int	i;
+	int	**map;
+	int	control;
 
+	control = 0;
 	i = -1;
 	map = (int **)malloc(sizeof(int *) * 4);
 	if (!map)
 		return (NULL);
 	while (++i < 4)
+	{
 		map[i] = (int *)malloc(sizeof(int) * 6);
+		if (!map[i] && control++)
+			break ;
+	}
+	if (control)
+	{
+		while (i-- <= 0)
+			free(map[i]);
+		free(map);
+		return (NULL);
+	}
 	clear_map(map);
 	return (map);
 }
