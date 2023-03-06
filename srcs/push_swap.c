@@ -25,7 +25,7 @@ int	main(int argc, char **argv)
 	if (check_if_sorted(argv, argc))
 		return (0);
 	stack = arrange_stack(argv, argc);
-	if (lstsize(stack->stack_a) == 2)
+	if (lstsize(stack->stack_a) == 2 && ft_printf("sa\n"))
 		sa(stack);
 	else if (lstsize(stack->stack_a) == 3)
 		sort_three(stack);

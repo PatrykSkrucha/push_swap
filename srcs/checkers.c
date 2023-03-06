@@ -42,11 +42,13 @@ int	check_if_number(char **input, int amount)
 	{
 		j = -1;
 		len = ft_strlen(input[i]);
+		if (!len)
+			return (1);
 		while (++j < len)
 		{
 			if (input[i][j] == '-')
 				j++;
-			if (input[i][j] < 48 || input[i][j] > 57)
+			if (!ft_isalnum(input[i][j]))
 				return (1);
 		}
 	}

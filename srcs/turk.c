@@ -71,7 +71,7 @@ static void	ra_or_rra(t_two *stack, int min, int max)
 	}
 }
 
-char	*turk(t_two *stack)
+void	*turk(t_two *stack)
 {
 	int		i;
 	int		min;
@@ -82,10 +82,7 @@ char	*turk(t_two *stack)
 	max = INT_MAX;
 	map = new_map();
 	if (!map)
-	{
-		free_stacks(stack);
-		exit (EXIT_FAILURE);
-	}
+		return (NULL);
 	i = -1;
 	while (++i < 2 && lstsize(stack->stack_a) > 3 && ft_printf("pb\n"))
 		pb(stack);

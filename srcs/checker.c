@@ -19,6 +19,12 @@ int	main(int argc, char **argv)
 
 	validate_input(argv, argc);
 	stack = arrange_stack(argv, argc);
+	if (lstsize(stack->stack_a) < argc - 1)
+	{
+		free_stacks(stack);
+		ft_putstr_fd("Error\n", STDERR_FILENO);
+		return (1);
+	}
 	while (1)
 	{
 		command = get_next_line(0);
@@ -27,7 +33,7 @@ int	main(int argc, char **argv)
 		parse_input(command, stack);
 		free(command);
 	}
-	if (is_sorted_stack(stack->stack_a) && lstsize(stack->stack_b) == 0)
+	if (lstsize(stack->stack_b) == 0 && is_sorted_stack(stack->stack_a))
 		ft_printf("OK\n");
 	else
 		ft_printf("KO\n");

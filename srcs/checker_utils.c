@@ -68,8 +68,8 @@ void	parse_input(char *command, t_two *stack)
 	{
 		free(command);
 		free_stacks(stack);
-		ft_printf("Error\n");
-		exit (255);
+		ft_putstr_fd("Error\n", STDERR_FILENO);
+		exit(EXIT_FAILURE);
 	}
 	perform_action(command, stack);
 }
