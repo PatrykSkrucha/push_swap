@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   turk.c                                             :+:      :+:    :+:   */
+/*   big_sort.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pskrucha <pskrucha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -71,7 +71,7 @@ static void	ra_or_rra(t_two *stack, int min, int max)
 	}
 }
 
-void	*turk(t_two *stack)
+void	*big_sort(t_two *stack)
 {
 	int		i;
 	int		min;

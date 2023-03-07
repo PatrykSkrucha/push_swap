@@ -54,7 +54,7 @@ int			pa(t_two *stack);
 int			rb(t_two *stack);
 int			sa(t_two *stack);
 void		sort_three(t_two *stack);
-void		*turk(t_two *stack);
+void		*big_sort(t_two *stack);
 void		find_best_path(t_map *map);
 void		set_index(t_single *stack);
 int			check_duplicate(char **input, int amount);

@@ -30,7 +30,7 @@ int	main(int argc, char **argv)
 	else if (lstsize(stack->stack_a) == 3)
 		sort_three(stack);
 	else
-		turk(stack);
+		big_sort(stack);
 	free_stacks(stack);
 	return (0);
 }
