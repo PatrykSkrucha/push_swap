@@ -63,8 +63,10 @@ int	add_back(t_two *lst, t_single *new, int control)
 	return (0);
 }
 
-void	add_front(t_two *lst, t_single *new, int control)
+int	add_front(t_two *lst, t_single *new, int control)
 {
+	if (!new)
+		return (1);
 	if (control)
 	{
 		new->next = lst->stack_a;
@@ -75,6 +77,7 @@ void	add_front(t_two *lst, t_single *new, int control)
 		new->next = lst->stack_b;
 		lst->stack_b = new;
 	}
+	return (0);
 }
 
 int	lstsize(t_single *lst)

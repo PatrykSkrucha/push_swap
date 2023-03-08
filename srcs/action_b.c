@@ -19,11 +19,11 @@ int	rb(t_two *stack)
 	if (lstsize(stack->stack_b) > 1)
 	{
 		head = stack->stack_b->next;
-		add_back(stack, new_list(stack->stack_b->number), 0);
+		if (add_back(stack, new_list(stack->stack_b->number), 0))
+			return (1);
 		free(stack->stack_b);
 		stack->stack_b = head;
 		set_index(stack->stack_b);
-		return (0);
 	}
 	return (0);
 }
@@ -52,7 +52,8 @@ int	rrb(t_two *stack)
 	if (lstsize(stack->stack_b) > 1)
 	{
 		head = new_list(lstlast(stack->stack_b)->number);
-		add_front(stack, head, 0);
+		if (add_front(stack, head, 0))
+			return (1);
 		while (stack->stack_b != NULL)
 		{
 			if (stack->stack_b->next->next == NULL)
@@ -64,7 +65,6 @@ int	rrb(t_two *stack)
 		}
 		stack->stack_b = head;
 		set_index(stack->stack_b);
-		return (0);
 	}
 	return (0);
 }
@@ -73,11 +73,11 @@ int	pb(t_two *stack)
 {
 	if (stack->stack_a)
 	{
-		add_front(stack, new_list(stack->stack_a->number), 0);
+		if (add_front(stack, new_list(stack->stack_a->number), 0))
+			return (1);
 		del_first(stack, 1);
 		set_index(stack->stack_a);
 		set_index(stack->stack_b);
-		return (0);
 	}
 	return (0);
 }

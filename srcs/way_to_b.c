@@ -70,27 +70,27 @@ static void	check_paths(t_two *stack, t_single *node, int **map)
 		find_path_to_smaller(map, stack->stack_b, node->number);
 }
 
-void	read_map_to_b(int *solution, t_two *stack)
+void	read_map_to_b(int *solution, t_two *stack, int *guard)
 {
 	while (solution[0] != 0 && solution[0]-- && ft_printf("rr\n"))
 	{
-		ra(stack);
-		rb(stack);
+		*guard = ra(stack);
+		*guard = rb(stack);
 	}
 	while (solution[1] != 0 && solution[1]-- && ft_printf("rrr\n"))
 	{
-		rra(stack);
-		rrb(stack);
+		*guard = rra(stack);
+		*guard = rrb(stack);
 	}
 	while (solution[2] != 0 && solution[2]-- && ft_printf("ra\n"))
-		ra(stack);
+		*guard = ra(stack);
 	while (solution[3] != 0 && solution[3]-- && ft_printf("rra\n"))
-		rra(stack);
+		*guard = rra(stack);
 	while (solution[4] != 0 && solution[4]-- && ft_printf("rb\n"))
-		rb(stack);
+		*guard = rb(stack);
 	while (solution[5] != 0 && solution[5]-- && ft_printf("rrb\n"))
-		rrb(stack);
-	pb(stack);
+		*guard = rrb(stack);
+	*guard = pb(stack);
 	ft_printf("pb\n");
 }
 

@@ -16,11 +16,11 @@ int	pa(t_two *stack)
 {
 	if (stack->stack_b)
 	{
-		add_front(stack, new_list(stack->stack_b->number), 1);
+		if (add_front(stack, new_list(stack->stack_b->number), 1))
+			return (1);
 		del_first(stack, 0);
 		set_index(stack->stack_a);
 		set_index(stack->stack_b);
-		return (0);
 	}
 	return (0);
 }
@@ -36,8 +36,8 @@ int	sa(t_two *stack)
 	second = new_list(stack->stack_a->next->number);
 	del_first(stack, 1);
 	del_first(stack, 1);
-	add_front(stack, first, 1);
-	add_front(stack, second, 1);
+	if (add_front(stack, first, 1) || add_front(stack, second, 1))
+		return (1);
 	set_index(stack->stack_a);
 	return (0);
 }
@@ -49,11 +49,11 @@ int	ra(t_two *stack)
 	if (lstsize(stack->stack_a) > 1)
 	{
 		head = stack->stack_a->next;
-		add_back(stack, new_list(stack->stack_a->number), 1);
+		if (add_back(stack, new_list(stack->stack_a->number), 1))
+			return (1);
 		free(stack->stack_a);
 		stack->stack_a = head;
 		set_index(stack->stack_a);
-		return (0);
 	}
 	return (0);
 }
@@ -65,7 +65,8 @@ int	rra(t_two *stack)
 	if (lstsize(stack->stack_a) > 1)
 	{
 		head = new_list(lstlast(stack->stack_a)->number);
-		add_front(stack, head, 1);
+		if (add_front(stack, head, 1))
+			return (1);
 		while (stack->stack_a != NULL)
 		{
 			if (stack->stack_a->next->next == NULL)
@@ -77,7 +78,6 @@ int	rra(t_two *stack)
 		}
 		stack->stack_a = head;
 		set_index(stack->stack_a);
-		return (0);
 	}
 	return (0);
 }

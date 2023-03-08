@@ -7,3 +7,4 @@ push_swap
 checker_linux
 checker_Mac
 checker
+malloc_checker

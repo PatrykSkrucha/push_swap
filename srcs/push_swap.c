@@ -15,6 +15,7 @@
 int	main(int argc, char **argv)
 {
 	t_two	*stack;
+	int		guard;
 
 	if (check_if_number(argv, argc) || check_min_max(argv, argc)
 		|| check_duplicate(argv, argc))
@@ -25,12 +26,15 @@ int	main(int argc, char **argv)
 	if (check_if_sorted(argv, argc))
 		return (0);
 	stack = arrange_stack(argv, argc);
+	guard = 0;
 	if (lstsize(stack->stack_a) == 2 && ft_printf("sa\n"))
-		sa(stack);
+		guard = sa(stack);
 	else if (lstsize(stack->stack_a) == 3)
-		sort_three(stack);
+		guard = sort_three(stack);
 	else
-		big_sort(stack);
+		guard = big_sort(stack);
 	free_stacks(stack);
+	if (guard && ft_printf("Malloc failure.\n"))
+		return (1);
 	return (0);
 }

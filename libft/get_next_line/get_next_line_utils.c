@@ -75,7 +75,7 @@ int	check_for_nl(char *str)
 		return (-5);
 	len = 0;
 	while (str[len])
-	{	
+	{
 		if (str[len] == '\n' && len + 1 == better_strlen(str))
 		{
 			return (-2);
@@ -101,7 +101,7 @@ char	*read_line(char *buffer, int fd, char *line)
 			return (line);
 		}
 		if (better_strlen(buffer) && check_for_nl(buffer) >= 0)
-		{		
+		{
 			line = update_line(line, buffer, check_for_nl(buffer) + 1);
 			update_buffer(buffer, check_for_nl(buffer) + 1);
 			return (line);

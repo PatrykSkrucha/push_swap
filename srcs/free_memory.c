@@ -32,7 +32,7 @@ void	free_stacks(t_two *stack)
 	free(stack);
 }
 
-void	free_map(t_map *map)
+int	free_map(t_map *map)
 {
 	int	i;
 
@@ -47,4 +47,5 @@ void	free_map(t_map *map)
 	if (map->best_path)
 		free(map->best_path);
 	free(map);
+	return (0);
 }

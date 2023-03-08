@@ -28,23 +28,43 @@ void	find_max_and_min(t_single *stack, int *min, int *max)
 
 static void	send_to_b(t_map *map, t_two *stack, int min, int max)
 {
+	int	guard;
+
+	guard = 0;
 	clear_map(map->map);
 	ft_bzero(map->best_solution, 6);
 	find_max_and_min(stack->stack_b, &min, &max);
 	best_solution(stack, map);
-	read_map_to_b(map->best_solution, stack);
+	read_map_to_b(map->best_solution, stack, &guard);
+	if (guard)
+	{
+		free_stacks(stack);
+		free_map(map);
+		ft_printf("Malloc failure.\n");
+		exit (EXIT_FAILURE);
+	}
 }
 
 static void	send_to_a(t_map *map, t_two *stack)
 {
+	int	guard;
+
+	guard = 0;
 	clear_map(map->map);
 	ft_bzero(map->best_solution, 6);
 	path_to_a(stack, get_node(stack->stack_b, 0), map->map);
 	find_best_path_to_a(map);
-	read_map_to_a(map->best_path, stack);
+	read_map_to_a(map->best_path, stack, &guard);
+	if (guard)
+	{
+		free_stacks(stack);
+		free_map(map);
+		ft_printf("Malloc failure.\n");
+		exit (EXIT_FAILURE);
+	}
 }
 
-static void	ra_or_rra(t_two *stack, int min, int max)
+static int	ra_or_rra(t_two *stack, int min, int max)
 {
 	int	index;
 
@@ -52,28 +72,26 @@ static void	ra_or_rra(t_two *stack, int min, int max)
 	index = get_node_index(stack->stack_a, min);
 	if (index <= lstsize(stack->stack_a) / 2)
 	{
-		while (index > 0)
+		while (index-- > 0 && ft_printf("ra\n"))
 		{
-			ra(stack);
-			ft_printf("ra\n");
-			index--;
+			if (ra(stack))
+				return (1);
 		}
 	}
 	else
 	{
 		index = lstsize(stack->stack_a) - index;
-		while (index > 0)
+		while (index-- > 0 && ft_printf("rra\n"))
 		{
-			rra(stack);
-			ft_printf("rra\n");
-			index--;
+			if (rra(stack))
+				return (1);
 		}
 	}
+	return (0);
 }
 
-void	*big_sort(t_two *stack)
+int	big_sort(t_two *stack)
 {
-	int		i;
 	int		min;
 	int		max;
 	t_map	*map;
@@ -82,16 +100,20 @@ void	*big_sort(t_two *stack)
 	max = INT_MAX;
 	map = new_map();
 	if (!map)
-		return (NULL);
-	i = -1;
-	while (++i < 2 && lstsize(stack->stack_a) > 3 && ft_printf("pb\n"))
-		pb(stack);
+		return (1);
+	while (lstsize(stack->stack_a) > 3 && lstsize(stack->stack_b) != 2)
+	{
+		if (ft_printf("pb\n") && pb(stack))
+			return (1);
+	}
 	while (lstsize(stack->stack_a) > 3)
 		send_to_b(map, stack, min, max);
-	sort_three(stack);
+	if (sort_three(stack) && !free_map(map))
+		return (1);
 	while (lstsize(stack->stack_b) > 0)
 		send_to_a(map, stack);
-	ra_or_rra(stack, min, max);
 	free_map(map);
-	return (NULL);
+	if (ra_or_rra(stack, min, max))
+		return (1);
+	return (0);
 }

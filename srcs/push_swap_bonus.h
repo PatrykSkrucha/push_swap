@@ -43,7 +43,7 @@ t_single	*lstlast(t_single *lst);
 t_two		*arrange_stack(char **input, int amount);
 int			sb(t_two *stack);
 int			add_back(t_two *lst, t_single *new, int control);
-void		add_front(t_two *lst, t_single *new, int control);
+int			add_front(t_two *lst, t_single *new, int control);
 int			lstsize(t_single *lst);
 int			rra(t_two *stack);
 int			rrb(t_two *stack);

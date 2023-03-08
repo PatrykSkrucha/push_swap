@@ -62,19 +62,19 @@ void	path_to_a(t_two *stack, t_single *node, int **map)
 		path_to_greater(map, stack->stack_a, node->number);
 }
 
-void	read_map_to_a(int *solution, t_two *stack)
+void	read_map_to_a(int *solution, t_two *stack, int *guard)
 {
 	while (solution[2] != 0 && solution[2]--)
 	{
 		ft_printf("ra\n");
-		ra(stack);
+		*guard = ra(stack);
 	}
 	while (solution[3] != 0 && solution[3]--)
 	{
-		rra(stack);
+		*guard = rra(stack);
 		ft_printf("rra\n");
 	}
-	pa(stack);
+	*guard = pa(stack);
 	ft_printf("pa\n");
 }
 

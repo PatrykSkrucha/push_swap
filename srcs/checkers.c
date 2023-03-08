@@ -48,7 +48,7 @@ int	check_if_number(char **input, int amount)
 		{
 			if (input[i][j] == '-')
 				j++;
-			if (!ft_isalnum(input[i][j]))
+			if (!ft_isdigit(input[i][j]))
 				return (1);
 		}
 	}
