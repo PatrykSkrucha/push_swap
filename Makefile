@@ -15,8 +15,8 @@ OBONUS = $(BONUSFILES:.c=.o)
 PUSH_SWAP = push_swap
 BONUS = checker
 
-HEADER = ./srcs/push_swap.h
-HEADERBONUS = ./srcs/push_swap_bonus.h
+HEADER = ./incl/push_swap.h
+HEADERBONUS = ./incl/push_swap_bonus.h
 LIBFT = libft/libft.a
 
 FLAGS = -Wall -Wextra -Werror

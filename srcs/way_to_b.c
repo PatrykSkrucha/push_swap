@@ -6,11 +6,11 @@
 /*   By: pskrucha <pskrucha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 15:18:52 by pskrucha          #+#    #+#             */
-/*   Updated: 2023/03/04 21:14:16 by pskrucha         ###   ########.fr       */
+/*   Updated: 2023/03/09 16:30:23 by pskrucha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../incl/push_swap.h"
 
 static void	find_path_to_max_b(int **map, t_single *stack, int max)
 {

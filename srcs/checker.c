@@ -6,11 +6,11 @@
 /*   By: pskrucha <pskrucha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 22:34:41 by pskrucha          #+#    #+#             */
-/*   Updated: 2023/03/05 00:26:40 by pskrucha         ###   ########.fr       */
+/*   Updated: 2023/03/09 16:30:59 by pskrucha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap_bonus.h"
+#include "../incl/push_swap_bonus.h"
 
 int	main(int argc, char **argv)
 {

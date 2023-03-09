@@ -6,11 +6,11 @@
 /*   By: pskrucha <pskrucha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 15:15:25 by pskrucha          #+#    #+#             */
-/*   Updated: 2023/03/04 23:56:54 by pskrucha         ###   ########.fr       */
+/*   Updated: 2023/03/09 16:30:23 by pskrucha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../incl/push_swap.h"
 
 int	rb(t_two *stack)
 {

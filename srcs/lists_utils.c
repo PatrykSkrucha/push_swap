@@ -6,11 +6,11 @@
 /*   By: pskrucha <pskrucha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 15:16:00 by pskrucha          #+#    #+#             */
-/*   Updated: 2023/03/03 17:52:51 by pskrucha         ###   ########.fr       */
+/*   Updated: 2023/03/09 16:30:23 by pskrucha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../incl/push_swap.h"
 
 t_single	*new_list(int content)
 {

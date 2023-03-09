@@ -6,11 +6,11 @@
 /*   By: pskrucha <pskrucha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 15:18:19 by pskrucha          #+#    #+#             */
-/*   Updated: 2023/03/04 21:14:03 by pskrucha         ###   ########.fr       */
+/*   Updated: 2023/03/09 16:30:23 by pskrucha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../incl/push_swap.h"
 
 void	find_max_and_min(t_single *stack, int *min, int *max)
 {
