@@ -41,7 +41,7 @@ int	check_if_number(char **input, int amount)
 	while (++i < amount)
 	{
 		j = -1;
-		len = ft_strlen(input[i]);
+		len = better_strlen(input[i]);
 		if (!len)
 			return (1);
 		while (++j < len)
