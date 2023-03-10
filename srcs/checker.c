@@ -6,7 +6,7 @@
 /*   By: pskrucha <pskrucha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 22:34:41 by pskrucha          #+#    #+#             */
-/*   Updated: 2023/03/10 16:02:11 by pskrucha         ###   ########.fr       */
+/*   Updated: 2023/03/10 18:44:27 by pskrucha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,14 @@ int	main(int argc, char **argv)
 	char	*command;
 	t_two	*stack;
 
-	validate_input(argv, argc);
-	stack = arrange_stack(argv, argc);
+	stack = malloc(sizeof(t_two));
+	if (!stack && !ft_putstr_fd("Error\n", STDERR_FILENO))
+		return (1);
+	stack->stack_a = NULL;
+	stack->stack_b = NULL;
+	arrange_stack(argv, argc, stack);
+	if (check_duplicte(stack->stack_a) && !free_stacks(stack))
+		return (ft_putstr_fd("Error\n", STDERR_FILENO) && 1);
 	while (1)
 	{
 		command = get_next_line(0);

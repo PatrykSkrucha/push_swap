@@ -6,7 +6,7 @@
 /*   By: pskrucha <pskrucha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 15:18:19 by pskrucha          #+#    #+#             */
-/*   Updated: 2023/03/10 14:44:09 by pskrucha         ###   ########.fr       */
+/*   Updated: 2023/03/10 19:01:19 by pskrucha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ static void	send_to_a(t_map *map, t_two *stack)
 	{
 		free_stacks(stack);
 		free_map(map);
-		ft_printf("Malloc failure.\n");
+		ft_putstr_fd("Error\n", STDERR_FILENO);
 		exit (EXIT_FAILURE);
 	}
 }

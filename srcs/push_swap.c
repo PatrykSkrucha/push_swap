@@ -6,20 +6,11 @@
 /*   By: pskrucha <pskrucha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 15:16:49 by pskrucha          #+#    #+#             */
-/*   Updated: 2023/03/10 17:55:52 by pskrucha         ###   ########.fr       */
+/*   Updated: 2023/03/10 19:09:17 by pskrucha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/push_swap.h"
-
-//static void print_list(t_single *stack)
-//{
-//	while (stack)
-//	{
-//		ft_printf("%i\n", stack->number);
-//		stack = stack->next;
-//	}
-//}
 
 int	main(int argc, char **argv)
 {

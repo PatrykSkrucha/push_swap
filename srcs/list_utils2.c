@@ -6,7 +6,7 @@
 /*   By: pskrucha <pskrucha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 15:15:46 by pskrucha          #+#    #+#             */
-/*   Updated: 2023/03/10 17:57:33 by pskrucha         ###   ########.fr       */
+/*   Updated: 2023/03/10 19:03:42 by pskrucha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,13 +87,14 @@ t_two	*arrange_stack(char **input, int amount, t_two *stack)
 	{
 		j = -1;
 		str = ft_split(input[i], ' ');
-		if (!str && !free_stacks(stack))
+		if ((!str || !better_strlen(input[i])) && !free_stacks(stack))
 		{
 			ft_putstr_fd("Error\n", STDERR_FILENO);
 			exit (EXIT_FAILURE);
 		}
-		if (check_and_appent(str, stack, &j) && write(2, "Error\n", 6))
+		if (check_and_appent(str, stack, &j))
 		{
+			ft_putstr_fd("Error\n", STDERR_FILENO);
 			free_input(str);
 			free_stacks(stack);
 			exit (EXIT_FAILURE);
