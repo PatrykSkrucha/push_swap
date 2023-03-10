@@ -6,14 +6,15 @@
 /*   By: pskrucha <pskrucha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 13:28:04 by pskrucha          #+#    #+#             */
-/*   Updated: 2022/10/18 13:33:59 by pskrucha         ###   ########.fr       */
+/*   Updated: 2023/03/10 15:08:52 by pskrucha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putstr_fd(char *s, int fd)
+int	ft_putstr_fd(char *s, int fd)
 {
 	if (s)
 		write(fd, s, ft_strlen(s));
+	return (0);
 }

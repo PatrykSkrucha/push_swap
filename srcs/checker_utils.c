@@ -6,22 +6,11 @@
 /*   By: pskrucha <pskrucha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 22:34:41 by pskrucha          #+#    #+#             */
-/*   Updated: 2023/03/09 16:31:25 by pskrucha         ###   ########.fr       */
+/*   Updated: 2023/03/10 16:10:51 by pskrucha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/push_swap_bonus.h"
-
-int	is_sorted_stack(t_single *stack)
-{
-	while (stack->next)
-	{
-		if (stack->number > stack->next->number)
-			return (0);
-		stack = stack->next;
-	}
-	return (1);
-}
 
 int	check_commands(char *command)
 {
@@ -72,16 +61,4 @@ void	parse_input(char *command, t_two *stack)
 		exit(EXIT_FAILURE);
 	}
 	perform_action(command, stack);
-}
-
-void	validate_input(char **argv, int argc)
-{
-	if (argc < 2)
-		exit(EXIT_SUCCESS);
-	if (check_if_number(argv, argc) || check_min_max(argv, argc)
-		|| check_duplicate(argv, argc))
-	{
-		ft_putstr_fd("Error\n", STDERR_FILENO);
-		exit(EXIT_FAILURE);
-	}
 }

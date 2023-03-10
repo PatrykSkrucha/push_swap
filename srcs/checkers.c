@@ -6,76 +6,85 @@
 /*   By: pskrucha <pskrucha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 15:15:53 by pskrucha          #+#    #+#             */
-/*   Updated: 2023/03/09 16:30:23 by pskrucha         ###   ########.fr       */
+/*   Updated: 2023/03/10 17:57:49 by pskrucha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/push_swap.h"
 
-int	check_duplicate(char **input, int amount)
+int	check_if_sorted(t_single *stack)
 {
-	int	i;
-	int	j;
-
-	i = 0;
-	while (++i < amount - 1)
+	while (stack && stack->next)
 	{
-		j = 1;
-		while (j + i < amount)
-		{
-			if (ft_atoi(input[i]) == ft_atoi(input[i + j]))
-				return (1);
-			j++;
-		}
-	}
-	return (0);
-}
-
-int	check_if_number(char **input, int amount)
-{
-	int	i;
-	int	j;
-	int	len;
-
-	i = 0;
-	while (++i < amount)
-	{
-		j = -1;
-		len = better_strlen(input[i]);
-		if (!len)
+		if (stack->number > stack->next->number)
 			return (1);
-		while (++j < len)
-		{
-			if (input[i][j] == '-')
-				j++;
-			if (!ft_isdigit(input[i][j]))
-				return (1);
-		}
+		stack = stack->next;
 	}
 	return (0);
 }
 
-int	check_if_sorted(char **input, int amount)
+int	precheck(char *str)
 {
 	int	i;
 
-	i = 0;
-	while (++i < amount - 1)
+	if (!better_strlen(str))
 	{
-		if (ft_atoi(input[i]) > ft_atoi(input[i + 1]))
-			return (0);
+		return (1);
 	}
-	return (1);
+	i = -1;
+	while (str[++i])
+	{
+		if (str[i] == '-')
+			i++;
+		if (!ft_isdigit(str[i]))
+		{
+			return (1);
+		}
+	}
+	if (ft_atoi(str) != ft_atoi_long(str))
+		return (1);
+	return (0);
 }
 
-int	check_min_max(char **input, int amount)
+int	check_duplicte(t_single *stack)
 {
-	int	i;
+	t_single	*head;
+	int			temp;
 
-	i = 0;
-	while (++i < amount)
+	while (stack && stack->next)
 	{
-		if (ft_atoi(input[i]) != ft_atoi_long(input[i]))
+		head = stack;
+		temp = stack->number;
+		stack = stack->next;
+		while (stack)
+		{
+			if (temp == stack->number)
+				return (1);
+			stack = stack->next;
+		}
+		stack = head->next;
+	}
+	return (0);
+}
+
+void	after_checks(t_two *stack)
+{
+	if (check_duplicte(stack->stack_a) && !free_stacks(stack))
+	{
+		ft_putstr_fd("Error\n", STDERR_FILENO);
+		exit (EXIT_FAILURE);
+	}
+	if (!check_if_sorted(stack->stack_a) && !free_stacks(stack))
+		exit (EXIT_SUCCESS);
+}
+
+int	check_and_appent(char **str, t_two *stack, int *j)
+{
+	while (str[++*j])
+	{
+		if (precheck(str[*j]))
+			return (1);
+		if (add_back(stack, new_list(ft_atoi(str[*j])), 1))
 			return (1);
 	}
 	return (0);

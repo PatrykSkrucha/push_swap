@@ -6,7 +6,7 @@
 /*   By: pskrucha <pskrucha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 15:15:46 by pskrucha          #+#    #+#             */
-/*   Updated: 2023/03/09 16:30:23 by pskrucha         ###   ########.fr       */
+/*   Updated: 2023/03/10 17:57:33 by pskrucha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,24 +76,29 @@ t_map	*new_map(void)
 	return (new);
 }
 
-t_two	*arrange_stack(char **input, int amount)
+t_two	*arrange_stack(char **input, int amount, t_two *stack)
 {
+	char	**str;
 	int		i;
-	t_two	*stack;
+	int		j;
 
 	i = 0;
-	stack = (t_two *)malloc(sizeof(t_two));
-	if (!stack)
-		exit (EXIT_FAILURE);
-	stack->stack_a = NULL;
-	stack->stack_b = NULL;
 	while (++i < amount)
 	{
-		if (add_back(stack, new_list(ft_atoi(input[i])), 1))
+		j = -1;
+		str = ft_split(input[i], ' ');
+		if (!str && !free_stacks(stack))
 		{
+			ft_putstr_fd("Error\n", STDERR_FILENO);
+			exit (EXIT_FAILURE);
+		}
+		if (check_and_appent(str, stack, &j) && write(2, "Error\n", 6))
+		{
+			free_input(str);
 			free_stacks(stack);
 			exit (EXIT_FAILURE);
 		}
+		free_input(str);
 	}
 	set_index(stack->stack_a);
 	return (stack);

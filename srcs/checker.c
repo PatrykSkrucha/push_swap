@@ -6,7 +6,7 @@
 /*   By: pskrucha <pskrucha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 22:34:41 by pskrucha          #+#    #+#             */
-/*   Updated: 2023/03/09 16:30:59 by pskrucha         ###   ########.fr       */
+/*   Updated: 2023/03/10 16:02:11 by pskrucha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	main(int argc, char **argv)
 		parse_input(command, stack);
 		free(command);
 	}
-	if (lstsize(stack->stack_b) == 0 && is_sorted_stack(stack->stack_a))
+	if (lstsize(stack->stack_b) == 0 && !check_if_sorted(stack->stack_a))
 		ft_printf("OK\n");
 	else
 		ft_printf("KO\n");

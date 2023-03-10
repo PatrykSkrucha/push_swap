@@ -6,7 +6,7 @@
 /*   By: pskrucha <pskrucha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 15:17:21 by pskrucha          #+#    #+#             */
-/*   Updated: 2023/03/04 23:52:40 by pskrucha         ###   ########.fr       */
+/*   Updated: 2023/03/10 17:55:11 by pskrucha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ typedef struct s_map
 t_single	*new_list(int content);
 t_single	*lstlast(t_single *lst);
 t_single	*get_node(t_single *stack, int index);
-t_two		*arrange_stack(char **input, int amount);
+t_two		*arrange_stack(char **input, int amount, t_two *stack);
 int			add_back(t_two *lst, t_single *new, int control);
 int			add_front(t_two *lst, t_single *new, int control);
 int			lstsize(t_single *lst);
@@ -57,10 +57,9 @@ int			sort_three(t_two *stack);
 int			big_sort(t_two *stack);
 void		find_best_path(t_map *map);
 void		set_index(t_single *stack);
-int			check_duplicate(char **input, int amount);
-int			check_if_number(char **input, int amount);
-int			check_if_sorted(char **input, int amount);
-int			check_min_max(char **input, int amount);
+int			check_duplicte(t_single *stack);
+int			precheck(char *str);
+int			check_if_sorted(t_single *stack);
 int			count_steps(int *map);
 void		update_best_solution(int *best_path, int *best_solution);
 void		best_solution(t_two *stack, t_map *map);
@@ -77,6 +76,9 @@ void		find_best_path_to_a(t_map *map);
 int			get_node_index(t_single *node, int number);
 void		find_max_and_min(t_single *stack, int *min, int *max);
 int			free_map(t_map *map);
-void		free_stacks(t_two *stack);
+int			free_stacks(t_two *stack);
+int			free_input(char **str);
+void		after_checks(t_two *stack);
+int			check_and_appent(char **str, t_two *stack, int *j);
 
 #endif
