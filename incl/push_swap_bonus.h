@@ -61,6 +61,6 @@ int			check_if_sorted(t_single *stack);
 int			check_commands(char *command);
 void		perform_action(char *command, t_two *stack);
 void		parse_input(char *command, t_two *stack);
-int			check_and_appent(char **str, t_two *stack, int *j);
+int			check_and_appent(char **str, t_two *stack);
 
 #endif

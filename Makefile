@@ -50,7 +50,6 @@ $(LIBFT):
 	make -C libft
 clean:
 	$(RM) $(OFILES) $(OMAIN) $(OBONUS)
-	make clean -C libft
 	@printf "\n$(YELLOW)Removed object files$(RESET)\n\n"
 
 fclean: clean

@@ -78,13 +78,16 @@ void	after_checks(t_two *stack)
 		exit (EXIT_SUCCESS);
 }
 
-int	check_and_appent(char **str, t_two *stack, int *j)
+int	check_and_appent(char **str, t_two *stack)
 {
-	while (str[++*j])
+	int		j;
+
+	j = -1;
+	while (str[++j])
 	{
-		if (precheck(str[*j]))
+		if (precheck(str[j]))
 			return (1);
-		if (add_back(stack, new_list(ft_atoi(str[*j])), 1))
+		if (add_back(stack, new_list(ft_atoi(str[j])), 1))
 			return (1);
 	}
 	return (0);

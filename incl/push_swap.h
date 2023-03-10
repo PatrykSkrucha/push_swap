@@ -79,6 +79,6 @@ int			free_map(t_map *map);
 int			free_stacks(t_two *stack);
 int			free_input(char **str);
 void		after_checks(t_two *stack);
-int			check_and_appent(char **str, t_two *stack, int *j);
+int			check_and_appent(char **str, t_two *stack);
 
 #endif

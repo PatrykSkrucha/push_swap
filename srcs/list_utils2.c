@@ -80,19 +80,17 @@ t_two	*arrange_stack(char **input, int amount, t_two *stack)
 {
 	char	**str;
 	int		i;
-	int		j;
 
 	i = 0;
 	while (++i < amount)
 	{
-		j = -1;
 		str = ft_split(input[i], ' ');
 		if ((!str || !better_strlen(input[i])) && !free_stacks(stack))
 		{
 			ft_putstr_fd("Error\n", STDERR_FILENO);
 			exit (EXIT_FAILURE);
 		}
-		if (check_and_appent(str, stack, &j))
+		if (check_and_appent(str, stack))
 		{
 			ft_putstr_fd("Error\n", STDERR_FILENO);
 			free_input(str);
