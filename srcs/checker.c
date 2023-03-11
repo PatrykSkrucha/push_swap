@@ -17,12 +17,9 @@ int	main(int argc, char **argv)
 	char	*command;
 	t_two	*stack;
 
-	stack = malloc(sizeof(t_two));
-	if (!stack && !ft_putstr_fd("Error\n", STDERR_FILENO))
-		return (1);
-	stack->stack_a = NULL;
-	stack->stack_b = NULL;
-	arrange_stack(argv, argc, stack);
+	if (argc < 2)
+		return (0);
+	stack = arrange_stack(argv, argc);
 	if (check_duplicte(stack->stack_a) && !free_stacks(stack))
 		return (ft_putstr_fd("Error\n", STDERR_FILENO) && 1);
 	while (1)

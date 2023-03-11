@@ -25,8 +25,8 @@ void	find_path_to_min_a(t_single *stack_a, int min, int **map)
 		stack_a = stack_a->next;
 	}
 	stack_a = head;
-	map[1][2] = min_index;
-	map[3][3] = lstsize(stack_a) - min_index;
+	map[1][RA] = min_index;
+	map[3][RRA] = lstsize(stack_a) - min_index;
 }
 
 void	path_to_greater(int **map, t_single *stack_a, int number)
@@ -44,8 +44,8 @@ void	path_to_greater(int **map, t_single *stack_a, int number)
 			index = stack_a->next->index;
 		stack_a = stack_a->next;
 	}
-	map[1][2] = index;
-	map[3][3] = size - index;
+	map[1][RA] = index;
+	map[3][RRA] = size - index;
 }
 
 void	path_to_a(t_two *stack, t_single *node, int **map)
@@ -64,12 +64,12 @@ void	path_to_a(t_two *stack, t_single *node, int **map)
 
 void	read_map_to_a(int *solution, t_two *stack, int *guard)
 {
-	while (solution[2] != 0 && solution[2]--)
+	while (solution[RA] != 0 && solution[RA]--)
 	{
 		ft_printf("ra\n");
 		*guard = ra(stack);
 	}
-	while (solution[3] != 0 && solution[3]--)
+	while (solution[RRA] != 0 && solution[RRA]--)
 	{
 		*guard = rra(stack);
 		ft_printf("rra\n");
@@ -80,7 +80,7 @@ void	read_map_to_a(int *solution, t_two *stack, int *guard)
 
 void	find_best_path_to_a(t_map *map)
 {
-	if (map->map[1][2] <= map->map[3][3])
+	if (map->map[1][RA] <= map->map[3][RRA])
 		update_best_solution(map->map[1], map->best_path);
 	else
 		update_best_solution(map->map[3], map->best_path);

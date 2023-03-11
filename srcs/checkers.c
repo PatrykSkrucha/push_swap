@@ -78,17 +78,25 @@ void	after_checks(t_two *stack)
 		exit (EXIT_SUCCESS);
 }
 
-int	check_and_appent(char **str, t_two *stack)
+int	check_and_appent(t_two *stack, int *i, char **input)
 {
 	int		j;
+	char	**str;
 
 	j = -1;
+	str = ft_split(input[*i], ' ');
+	if ((!str || !better_strlen(input[*i])) && !free_stacks(stack))
+	{
+		ft_putstr_fd("Error\n", STDERR_FILENO);
+		exit (EXIT_FAILURE);
+	}
 	while (str[++j])
 	{
-		if (precheck(str[j]))
+		if (precheck(str[j]) && !free_input(str))
 			return (1);
-		if (add_back(stack, new_list(ft_atoi(str[j])), 1))
+		if (add_back(stack, new_list(ft_atoi(str[j])), 1) && !free_input(str))
 			return (1);
 	}
+	free_input(str);
 	return (0);
 }

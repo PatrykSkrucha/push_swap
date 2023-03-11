@@ -26,14 +26,13 @@ void	find_max_and_min(t_single *stack, int *min, int *max)
 	}
 }
 
-static void	send_to_b(t_map *map, t_two *stack, int min, int max)
+static void	send_to_b(t_map *map, t_two *stack)
 {
 	int	guard;
 
 	guard = 0;
 	clear_map(map->map);
 	ft_bzero(map->best_solution, 6);
-	find_max_and_min(stack->stack_b, &min, &max);
 	best_solution(stack, map);
 	read_map_to_b(map->best_solution, stack, &guard);
 	if (guard)
@@ -72,19 +71,21 @@ static int	ra_or_rra(t_two *stack, int min, int max)
 	index = get_node_index(stack->stack_a, min);
 	if (index <= lstsize(stack->stack_a) / 2)
 	{
-		while (index-- > 0 && ft_printf("ra\n"))
+		while (index--)
 		{
 			if (ra(stack))
 				return (1);
+			ft_printf("ra\n");
 		}
 	}
 	else
 	{
 		index = lstsize(stack->stack_a) - index;
-		while (index-- > 0 && ft_printf("rra\n"))
+		while (index--)
 		{
 			if (rra(stack))
 				return (1);
+			ft_printf("rra\n");
 		}
 	}
 	return (0);
@@ -107,7 +108,7 @@ int	big_sort(t_two *stack)
 			return (1);
 	}
 	while (lstsize(stack->stack_a) > 3)
-		send_to_b(map, stack, min, max);
+		send_to_b(map, stack);
 	if (sort_three(stack) && !free_map(map))
 		return (1);
 	while (lstsize(stack->stack_b) > 0)

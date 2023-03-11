@@ -17,12 +17,7 @@ int	main(int argc, char **argv)
 	t_two	*stack;
 	int		guard;
 
-	stack = malloc(sizeof(t_two));
-	if (!stack && !ft_putstr_fd("Error\n", STDERR_FILENO))
-		return (1);
-	stack->stack_a = NULL;
-	stack->stack_b = NULL;
-	arrange_stack(argv, argc, stack);
+	stack = arrange_stack(argv, argc);
 	guard = 0;
 	after_checks(stack);
 	if (lstsize(stack->stack_a) == 2 && ft_printf("sa\n"))

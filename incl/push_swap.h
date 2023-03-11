@@ -18,6 +18,30 @@
 # include "../libft/libft.h"
 # include <limits.h>
 
+# ifndef RR
+#  define RR 0
+# endif
+
+# ifndef RRR
+#  define RRR 1
+# endif
+
+# ifndef RA
+#  define RA 2
+# endif
+
+# ifndef RRA
+#  define RRA 3
+# endif
+
+# ifndef RB
+#  define RB 4
+# endif
+
+# ifndef RRB
+#  define RRB 5
+# endif
+
 typedef struct s_stack
 {
 	int				number;
@@ -41,7 +65,7 @@ typedef struct s_map
 t_single	*new_list(int content);
 t_single	*lstlast(t_single *lst);
 t_single	*get_node(t_single *stack, int index);
-t_two		*arrange_stack(char **input, int amount, t_two *stack);
+t_two		*arrange_stack(char **input, int amount);
 int			add_back(t_two *lst, t_single *new, int control);
 int			add_front(t_two *lst, t_single *new, int control);
 int			lstsize(t_single *lst);
@@ -79,6 +103,6 @@ int			free_map(t_map *map);
 int			free_stacks(t_two *stack);
 int			free_input(char **str);
 void		after_checks(t_two *stack);
-int			check_and_appent(char **str, t_two *stack);
+int			check_and_appent(t_two *stack, int *i, char **input);
 
 #endif

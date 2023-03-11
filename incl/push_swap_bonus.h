@@ -40,7 +40,7 @@ typedef struct s_map
 
 t_single	*new_list(int content);
 t_single	*lstlast(t_single *lst);
-t_two		*arrange_stack(char **input, int amount, t_two *stack);
+t_two		*arrange_stack(char **input, int amount);
 int			sb(t_two *stack);
 int			add_back(t_two *lst, t_single *new, int control);
 int			add_front(t_two *lst, t_single *new, int control);
@@ -61,6 +61,6 @@ int			check_if_sorted(t_single *stack);
 int			check_commands(char *command);
 void		perform_action(char *command, t_two *stack);
 void		parse_input(char *command, t_two *stack);
-int			check_and_appent(char **str, t_two *stack);
+int			check_and_appent(t_two *stack, int *i, char **input);
 
 #endif

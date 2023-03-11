@@ -67,17 +67,17 @@ void	shorten_way(int **map)
 	i = -1;
 	while (++i < 4)
 	{
-		while (map[i][2] > 0 && map[i][4] > 0)
+		while (map[i][RA] > 0 && map[i][RB] > 0)
 		{
-			map[i][0]++;
-			map[i][2]--;
-			map[i][4]--;
+			map[i][RR]++;
+			map[i][RA]--;
+			map[i][RB]--;
 		}
-		while (map[i][3] > 0 && map[i][5])
+		while (map[i][RRA] > 0 && map[i][RRB])
 		{
-			map[i][1]++;
-			map[i][3]--;
-			map[i][5]--;
+			map[i][RRR]++;
+			map[i][RRA]--;
+			map[i][RRB]--;
 		}
 	}
 }

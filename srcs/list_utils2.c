@@ -76,28 +76,25 @@ t_map	*new_map(void)
 	return (new);
 }
 
-t_two	*arrange_stack(char **input, int amount, t_two *stack)
+t_two	*arrange_stack(char **input, int amount)
 {
-	char	**str;
 	int		i;
+	t_two	*stack;
 
+	stack = malloc(sizeof(t_two));
+	if (!stack && !ft_putstr_fd("Error\n", STDERR_FILENO))
+		exit(EXIT_FAILURE);
+	stack->stack_a = NULL;
+	stack->stack_b = NULL;
 	i = 0;
 	while (++i < amount)
 	{
-		str = ft_split(input[i], ' ');
-		if ((!str || !better_strlen(input[i])) && !free_stacks(stack))
+		if (check_and_appent(stack, &i, input))
 		{
 			ft_putstr_fd("Error\n", STDERR_FILENO);
-			exit (EXIT_FAILURE);
-		}
-		if (check_and_appent(str, stack))
-		{
-			ft_putstr_fd("Error\n", STDERR_FILENO);
-			free_input(str);
 			free_stacks(stack);
 			exit (EXIT_FAILURE);
 		}
-		free_input(str);
 	}
 	set_index(stack->stack_a);
 	return (stack);
