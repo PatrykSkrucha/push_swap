@@ -89,7 +89,7 @@ t_two	*arrange_stack(char **input, int amount)
 	i = 0;
 	while (++i < amount)
 	{
-		if (check_and_appent(stack, &i, input))
+		if (check_and_append(stack, &i, input))
 		{
 			ft_putstr_fd("Error\n", STDERR_FILENO);
 			free_stacks(stack);

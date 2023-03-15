@@ -78,7 +78,7 @@ void	after_checks(t_two *stack)
 		exit (EXIT_SUCCESS);
 }
 
-int	check_and_appent(t_two *stack, int *i, char **input)
+int	check_and_append(t_two *stack, int *i, char **input)
 {
 	int		j;
 	char	**str;
